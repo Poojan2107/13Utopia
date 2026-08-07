@@ -47,7 +47,7 @@ export function ConnectForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-5 rounded-2xl border hairline bg-void-soft/50 p-6 sm:p-8"
+      className="space-y-5 rounded-[1.35rem] border hairline bg-void-soft/60 p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" name="name" required autoComplete="name" />
