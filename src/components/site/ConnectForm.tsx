@@ -59,7 +59,7 @@ export function ConnectForm() {
         <span className="text-cream/55">Interest</span>
         <select
           name="interest"
-          className="w-full rounded-xl border border-cream/15 bg-void px-4 py-3 text-cream outline-none focus:border-amber-light"
+          className="field"
           defaultValue={interests[0]}
         >
           {interests.map((i) => (
@@ -75,14 +75,11 @@ export function ConnectForm() {
           name="message"
           required
           rows={5}
-          className="w-full resize-y rounded-xl border border-cream/15 bg-void px-4 py-3 text-cream outline-none focus:border-amber-light"
+          className="field resize-y"
           placeholder="What are you trying to launch, grow, or fix?"
         />
       </label>
-      <button
-        type="submit"
-        className="w-full rounded-full bg-cream px-6 py-3 text-sm font-medium text-void transition hover:bg-cream-dim sm:w-auto"
-      >
+      <button type="submit" className="btn-primary w-full sm:w-auto">
         Send inquiry
       </button>
       {status === "sent" && (
@@ -113,7 +110,7 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="w-full rounded-xl border border-cream/15 bg-void px-4 py-3 text-cream outline-none focus:border-amber-light"
+        className="field"
       />
     </label>
   );

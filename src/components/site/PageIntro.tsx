@@ -20,24 +20,21 @@ export function PageIntro({
 
 export function CtaBand({ title = "Ready to go deeper?" }: { title?: string }) {
   return (
-    <div className="mt-16 rounded-2xl border hairline bg-void-soft/60 px-6 py-10 text-center sm:px-10">
-      <h2 className="font-display text-2xl text-cream sm:text-3xl">{title}</h2>
-      <p className="mx-auto mt-3 max-w-md text-sm text-cream/55">
-        Tell us the outcome you need. We&apos;ll map the right capabilities.
-      </p>
-      <div className="mt-6 flex flex-wrap justify-center gap-3">
-        <Link
-          href="/connect"
-          className="rounded-full bg-cream px-6 py-3 text-sm font-medium text-void transition hover:bg-cream-dim"
-        >
-          Start a project
-        </Link>
-        <Link
-          href="/capabilities"
-          className="rounded-full border border-cream/25 px-6 py-3 text-sm text-cream/90 transition hover:border-amber-light hover:text-amber-light"
-        >
-          All capabilities
-        </Link>
+    <div className="relative mt-16 overflow-hidden rounded-2xl border hairline bg-void-soft/70 px-6 py-12 text-center sm:px-10">
+      <div aria-hidden className="pointer-events-none absolute inset-0 amber-glow opacity-60" />
+      <div className="relative">
+        <h2 className="font-display text-2xl text-cream sm:text-3xl">{title}</h2>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-cream/55">
+          Tell us the outcome you need. We&apos;ll map the right capabilities.
+        </p>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <Link href="/connect" className="btn-primary">
+            Start a project
+          </Link>
+          <Link href="/capabilities" className="btn-ghost">
+            All capabilities
+          </Link>
+        </div>
       </div>
     </div>
   );

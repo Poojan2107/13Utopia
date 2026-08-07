@@ -9,6 +9,8 @@
   --color-amber-light: #c4a574;
   --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --radius-soft: 1.25rem;
+  --radius-pill: 9999px;
 }
 
 @layer base {
@@ -29,6 +31,15 @@
   a {
     @apply underline-offset-4;
   }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber-light);
+    outline-offset: 3px;
+  }
+
+  ::placeholder {
+    color: color-mix(in srgb, var(--color-cream) 35%, transparent);
+  }
 }
 
 @layer utilities {
@@ -42,5 +53,128 @@
 
   .hairline {
     border-color: color-mix(in srgb, var(--color-cream) 14%, transparent);
+  }
+
+  .surface {
+    border-radius: var(--radius-soft);
+    border: 1px solid color-mix(in srgb, var(--color-cream) 14%, transparent);
+    background: color-mix(in srgb, var(--color-void-soft) 80%, transparent);
+    transition:
+      border-color 0.25s ease,
+      transform 0.35s ease,
+      background-color 0.25s ease;
+  }
+
+  .surface-lift:hover {
+    border-color: color-mix(in srgb, var(--color-amber-light) 40%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .field {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-cream) 15%, transparent);
+    background: var(--color-void);
+    padding: 0.75rem 1rem;
+    color: var(--color-cream);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field:focus {
+    border-color: var(--color-amber-light);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-amber-light) 18%, transparent);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    background: var(--color-cream);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-void);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-cream-dim);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--color-cream) 25%, transparent);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--color-cream) 90%, transparent);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-amber-light);
+    color: var(--color-amber-light);
+  }
+
+  .amber-glow {
+    background: radial-gradient(
+      ellipse at 70% 20%,
+      color-mix(in srgb, var(--color-amber-light) 16%, transparent),
+      transparent 55%
+    );
+  }
+
+  .reveal {
+    animation: reveal-up 0.7s ease-out both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 0.08s;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 0.16s;
+  }
+
+  .float-soft {
+    animation: float-soft 7s ease-in-out infinite;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-delay-1,
+  .reveal-delay-2,
+  .float-soft {
+    animation: none;
+  }
+
+  .surface-lift:hover {
+    transform: none;
   }
 }

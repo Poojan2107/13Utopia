@@ -19,6 +19,7 @@ export const collectivePages: CollectivePage[] = [
       "Sets engagement goals and decision rights",
       "Keeps craft and commercial reality in the same conversation",
       "Escalation path when scope or risk shifts",
+      "Protects the brief from scope creep and vanity work",
     ],
   },
   {
@@ -29,6 +30,7 @@ export const collectivePages: CollectivePage[] = [
       "Identity and art direction",
       "UI/UX and digital experience",
       "CGI, motion, and campaign assets",
+      "Design systems that survive the next campaign",
     ],
   },
   {
@@ -39,6 +41,7 @@ export const collectivePages: CollectivePage[] = [
       "Acquisition strategy and experiments",
       "Content and channel systems",
       "Measurement and iteration loops",
+      "Honest reporting — what worked, what didn’t, what’s next",
     ],
   },
   {
@@ -49,6 +52,7 @@ export const collectivePages: CollectivePage[] = [
       "Clarity over theatre",
       "Ship, learn, improve",
       "Respect for client time and team energy",
+      "Feedback as a habit, not a quarterly event",
     ],
   },
 ];

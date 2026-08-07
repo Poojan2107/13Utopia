@@ -42,8 +42,8 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Full IA + SEO shell live (Phase 5):** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
-Org/FAQ JSON-LD, OG/Twitter, Connect FAQs, service leaf AEO. Canada deferred. Awwwards deferred.
+**Full IA + content depth (Phase 6):** Case covers/galleries, deeper Perspective/Collective, proof polish.  
+Canada deferred. Awwwards deferred. Client-approved project media still to swap in.
 
 ---
 
@@ -53,7 +53,9 @@ Org/FAQ JSON-LD, OG/Twitter, Connect FAQs, service leaf AEO. Canada deferred. Aw
 2. Capabilities + leaves ✓  
 3. Solutions + Case Stories ✓  
 4. Perspective + Collective + Careers ✓  
-5. Content fill + SEO/AEO ✓ (Awwwards craft still deferred) 
+5. Content fill + SEO/AEO ✓  
+6. Case media + content depth ✓  
+7. Restrained craft pass ✓ (full Awwwards still deferred) 
 
 ---
 

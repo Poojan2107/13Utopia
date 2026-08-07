@@ -18,15 +18,15 @@ export const perspectivePages: PerspectivePage[] = [
     sections: [
       {
         heading: "Where we started",
-        body: "13UTOPiA grew out of real client work in brand, web, and marketing — then expanded into products, AI, and engineering as the work demanded it.",
+        body: "13UTOPiA grew out of real client work in brand, web, and marketing — then expanded into products, AI, and engineering as the work demanded it. The through-line never changed: help businesses thrive in the digital landscape with execution they can feel.",
       },
       {
         heading: "Where we are",
-        body: "India HQ in Shyamal, Ahmedabad. A full capability map under one roof: growth, branding, digital products, AI, cloud, and strategy.",
+        body: "India HQ in Shyamal, Ahmedabad. A full capability map under one roof: growth marketing, branding & creative, digital products, AI & automation, cloud & engineering, and strategy & advisory. One studio, one accountable path from brief to ship.",
       },
       {
         heading: "What we refuse",
-        body: "Mythology theatre, vanity metrics, and builds that look clever but don’t move the business. We prefer clear outcomes and shippable craft.",
+        body: "Mythology theatre, vanity metrics, and builds that look clever but don’t move the business. We prefer clear outcomes, restrained craft, and systems the client’s team can actually run after we leave the room.",
       },
     ],
   },
@@ -82,15 +82,19 @@ export const perspectivePages: PerspectivePage[] = [
     sections: [
       {
         heading: "One accountable studio",
-        body: "Brand, growth, product, and tech don’t live in separate agencies fighting over the brief. We sequence them.",
+        body: "Brand, growth, product, and tech don’t live in separate agencies fighting over the brief. We sequence them so the website matches the campaign, and the campaign matches the product.",
       },
       {
         heading: "Outcome before ornament",
-        body: "We care about craft. We care more that the craft converts, launches, or automates something real.",
+        body: "We care about craft. We care more that the craft converts, launches, or automates something real. Beauty without a job is decoration — and decoration doesn’t compound.",
       },
       {
         heading: "Built for compounders",
-        body: "Clients who want the next release, the next channel, the next system — not a one-off brochure site.",
+        body: "Clients who want the next release, the next channel, the next system — not a one-off brochure site. If you’re building for the long game, we’re the right room.",
+      },
+      {
+        heading: "Ahmedabad roots, wider reach",
+        body: "Shyamal HQ keeps us close to Indian operators and founders. Work already spans multiple countries — remote collaboration is normal, not an afterthought.",
       },
     ],
   },
