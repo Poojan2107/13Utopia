@@ -9,7 +9,7 @@
 
 **13UTOPiA** is a growth & technology agency (**Ahmedabad / Shyamal HQ**).  
 Goal: ship the **official website** — premium, clear, SEO/AEO-ready, responsive.  
-**Build for ourselves first.** Awwwards = later, optional.  
+**Build for ourselves first.** Awwwards-style presence = Phase 9 ✓.  
 **Canada** = deferred (no Canada office UI yet).  
 Greek gods / mythology: **scrapped.**
 
@@ -34,7 +34,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 - Ship only what will ship — no speculative features.
 - Phase 1 = Foundation (scaffold, tokens, Home, Connect, chrome, SEO shell).
 - Single `npm run dev` server.
-- No Awwwards polish pass until core site is real.
+- No Awwwards polish pass until core site is real. (Core is real as of Phase 8.)
 
 ---
 
@@ -42,7 +42,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Launch-ready (Phase 8):** Legal pages, legacy redirects, breadcrumbs. Canada / Awwwards / verified metrics still deferred.
+**Presence (Phase 9):** Editorial home, cinematic cases, scroll reveals. Canada / verified metrics / client-locked media still deferred.
 
 ---
 
@@ -55,7 +55,8 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 5. Content fill + SEO/AEO ✓  
 6. Case media + content depth ✓  
 7. Restrained craft pass ✓  
-8. Launch readiness ✓ (legal, redirects, breadcrumbs) 
+8. Launch readiness ✓  
+9. Awwwards presence UI ✓ (home + cases + motion; no FX carnival) 
 
 ---
 

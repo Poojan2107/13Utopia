@@ -92,15 +92,17 @@
     justify-content: center;
     border-radius: var(--radius-pill);
     background: var(--color-cream);
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     font-size: 0.875rem;
     font-weight: 500;
+    letter-spacing: 0.01em;
     color: var(--color-void);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.25s ease, transform 0.25s ease;
   }
 
   .btn-primary:hover {
     background: var(--color-cream-dim);
+    transform: translateY(-1px);
   }
 
   .btn-ghost {
@@ -109,46 +111,107 @@
     justify-content: center;
     border-radius: var(--radius-pill);
     border: 1px solid color-mix(in srgb, var(--color-cream) 25%, transparent);
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     font-size: 0.875rem;
+    letter-spacing: 0.01em;
     color: color-mix(in srgb, var(--color-cream) 90%, transparent);
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
   }
 
   .btn-ghost:hover {
     border-color: var(--color-amber-light);
     color: var(--color-amber-light);
+    background: color-mix(in srgb, var(--color-amber-light) 6%, transparent);
   }
 
   .amber-glow {
     background: radial-gradient(
-      ellipse at 70% 20%,
-      color-mix(in srgb, var(--color-amber-light) 16%, transparent),
-      transparent 55%
+      ellipse at 68% 28%,
+      color-mix(in srgb, var(--color-amber-light) 20%, transparent),
+      transparent 58%
     );
   }
 
+  .stage-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+  }
+
   .reveal {
-    animation: reveal-up 0.7s ease-out both;
+    animation: reveal-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .reveal-delay-1 {
-    animation-delay: 0.08s;
+    animation-delay: 0.1s;
   }
 
   .reveal-delay-2 {
-    animation-delay: 0.16s;
+    animation-delay: 0.2s;
+  }
+
+  .reveal-delay-3 {
+    animation-delay: 0.32s;
   }
 
   .float-soft {
-    animation: float-soft 7s ease-in-out infinite;
+    animation: float-soft 8s ease-in-out infinite;
+  }
+
+  .reveal-io {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-io.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 3.5rem;
+    animation: marquee 42s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .case-media {
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .case-media {
+    transform: scale(1.045);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.35s ease;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  .scroll-cue {
+    animation: scroll-cue 2.2s ease-in-out infinite;
   }
 }
 
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -162,7 +225,28 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(6px);
   }
 }
 
@@ -170,11 +254,22 @@
   .reveal,
   .reveal-delay-1,
   .reveal-delay-2,
-  .float-soft {
+  .reveal-delay-3,
+  .float-soft,
+  .marquee-track,
+  .scroll-cue {
     animation: none;
   }
 
-  .surface-lift:hover {
+  .reveal-io {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .surface-lift:hover,
+  .group:hover .case-media,
+  .btn-primary:hover {
     transform: none;
   }
 }
