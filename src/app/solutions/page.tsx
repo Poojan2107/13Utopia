@@ -20,10 +20,7 @@ export default function SolutionsHubPage() {
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {solutions.map((s) => (
           <li key={s.slug}>
-            <Link
-              href={`/solutions/${s.slug}`}
-              className="flex h-full flex-col rounded-2xl border hairline bg-void-soft/50 p-6 transition hover:border-amber/40"
-            >
+            <Link href={`/solutions/${s.slug}`} className="surface surface-lift flex h-full flex-col p-6">
               <p className="text-xs uppercase tracking-[0.18em] text-amber-light/70">{s.intent}</p>
               <h2 className="mt-3 font-display text-2xl text-cream">{s.title}</h2>
               <p className="mt-2 flex-1 text-sm text-cream/55">{s.deck}</p>

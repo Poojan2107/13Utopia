@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { capabilities, getService } from "@/data/capabilities";
 import { CtaBand, PageIntro } from "@/components/site/PageIntro";
+import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
 
 type Props = { params: Promise<{ pillar: string; service: string }> };
 
@@ -30,6 +31,14 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Capabilities", href: "/capabilities" },
+          { name: pillar.title, href: `/capabilities/${pillar.slug}` },
+          { name: service.title, href: `/capabilities/${pillar.slug}/${service.slug}` },
+        ]}
+      />
       <p className="mb-6 text-sm text-cream/40">
         <Link href="/capabilities" className="hover:text-cream">
           Capabilities

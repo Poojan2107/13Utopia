@@ -20,11 +20,8 @@ export default function CapabilitiesHubPage() {
       <ul className="grid gap-4 sm:grid-cols-2">
         {capabilities.map((p, i) => (
           <li key={p.slug}>
-            <Link
-              href={`/capabilities/${p.slug}`}
-              className="block h-full rounded-2xl border hairline bg-void-soft/50 p-6 transition hover:border-amber/40"
-            >
-              <p className="text-xs text-cream/35">{String(i + 1).padStart(2, "0")}</p>
+            <Link href={`/capabilities/${p.slug}`} className="surface surface-lift block h-full p-6">
+              <p className="text-xs tabular-nums text-amber-light/60">{String(i + 1).padStart(2, "0")}</p>
               <h2 className="mt-2 font-display text-2xl text-cream">{p.title}</h2>
               <p className="mt-2 text-sm text-cream/55">{p.blurb}</p>
               <p className="mt-4 text-xs uppercase tracking-[0.16em] text-amber-light/70">

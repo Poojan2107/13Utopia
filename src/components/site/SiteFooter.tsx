@@ -75,13 +75,24 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="relative border-t hairline">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-5 text-xs text-cream/35 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-5 text-xs text-cream/35 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>
-          <Link href="/connect" className="transition hover:text-cream/70">
-            Start a project
-          </Link>
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            <Link href="/legal/privacy" className="transition hover:text-cream/70">
+              Privacy
+            </Link>
+            <Link href="/legal/terms" className="transition hover:text-cream/70">
+              Terms
+            </Link>
+            <Link href="/legal/refund" className="transition hover:text-cream/70">
+              Refunds
+            </Link>
+            <Link href="/connect" className="transition hover:text-cream/70">
+              Start a project
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

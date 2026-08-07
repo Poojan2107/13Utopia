@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { allCapabilityPaths } from "@/data/capabilities";
 import { caseStories } from "@/data/case-stories";
 import { collectivePages } from "@/data/collective";
+import { legalPages } from "@/data/legal";
 import { perspectivePages } from "@/data/perspective";
 import { solutions } from "@/data/solutions";
 import { site } from "@/data/site";
@@ -29,5 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStories.map((c) => entry(`/case-stories/${c.slug}`, 0.7)),
     ...perspectivePages.map((p) => entry(`/perspective/${p.slug}`, 0.7)),
     ...collectivePages.map((p) => entry(`/collective/${p.slug}`, 0.65)),
+    ...legalPages.map((p) => entry(`/legal/${p.slug}`, 0.3)),
   ];
 }

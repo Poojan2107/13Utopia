@@ -27,20 +27,17 @@ export default function CareersPage() {
         ))}
       </ul>
 
-      <div className="mt-12 max-w-xl space-y-4 rounded-2xl border hairline bg-void-soft/50 p-6">
+      <div className="surface mt-12 max-w-xl space-y-4 p-6">
         <h2 className="font-display text-lg text-cream">How to apply</h2>
         <p className="text-sm leading-relaxed text-cream/60">{careers.howToApply}</p>
         <div className="flex flex-wrap gap-3 pt-2">
           <a
             href={`mailto:${site.email}?subject=${encodeURIComponent("Careers — application")}`}
-            className="rounded-full bg-cream px-5 py-2.5 text-sm font-medium text-void transition hover:bg-cream-dim"
+            className="btn-primary !px-5 !py-2.5"
           >
             Email us
           </a>
-          <Link
-            href="/collective"
-            className="rounded-full border border-cream/25 px-5 py-2.5 text-sm text-cream/90 transition hover:border-amber-light hover:text-amber-light"
-          >
+          <Link href="/collective" className="btn-ghost !px-5 !py-2.5">
             See the collective
           </Link>
         </div>

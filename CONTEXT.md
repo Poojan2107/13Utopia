@@ -42,8 +42,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Full IA + content depth (Phase 6):** Case covers/galleries, deeper Perspective/Collective, proof polish.  
-Canada deferred. Awwwards deferred. Client-approved project media still to swap in.
+**Launch-ready (Phase 8):** Legal pages, legacy redirects, breadcrumbs. Canada / Awwwards / verified metrics still deferred.
 
 ---
 
@@ -55,7 +54,8 @@ Canada deferred. Awwwards deferred. Client-approved project media still to swap 
 4. Perspective + Collective + Careers ✓  
 5. Content fill + SEO/AEO ✓  
 6. Case media + content depth ✓  
-7. Restrained craft pass ✓ (full Awwwards still deferred) 
+7. Restrained craft pass ✓  
+8. Launch readiness ✓ (legal, redirects, breadcrumbs) 
 
 ---
 

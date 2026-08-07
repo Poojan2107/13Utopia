@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStories, getCaseStory } from "@/data/case-stories";
 import { CtaBand, PageIntro } from "@/components/site/PageIntro";
+import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,6 +32,13 @@ export default async function CaseStoryPage({ params }: Props) {
 
   return (
     <article>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Case Stories", href: "/case-stories" },
+          { name: c.client, href: `/case-stories/${c.slug}` },
+        ]}
+      />
       <div className="relative border-b hairline">
         <div className="relative mx-auto aspect-[21/9] max-h-[420px] w-full max-w-6xl overflow-hidden sm:aspect-[2.4/1]">
           <Image
