@@ -42,7 +42,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Presence system (Phase 10):** Interior hubs inherit editorial language from Phase 9. Canada / verified metrics / client-locked media still deferred.
+**Case media (Phase 11):** Curated frames, bento galleries, sample disclaimer, `public/cases/` swap path. Client-locked stills still pending drop. Canada / verified metrics deferred.
 
 ---
 
@@ -57,7 +57,8 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 7. Restrained craft pass ✓  
 8. Launch readiness ✓  
 9. Awwwards presence UI ✓  
-10. Interior presence sync ✓ 
+10. Interior presence sync ✓  
+11. Case media curation ✓ (client-locked drops still pending) 
 
 ---
 

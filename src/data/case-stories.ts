@@ -1,9 +1,16 @@
+export type CaseFrame = {
+  src: string;
+  alt: string;
+  /** cover | wide | square — drives bento layout */
+  layout?: "cover" | "wide" | "square";
+};
+
 export type CaseStory = {
   slug: string;
   client: string;
   logo?: string;
   cover: string;
-  gallery?: string[];
+  frames: CaseFrame[];
   sector: string;
   year?: string;
   summary: string;
@@ -13,19 +20,30 @@ export type CaseStory = {
   outcomes?: string[];
   services: { label: string; href: string }[];
   solutionHref?: string;
+  /**
+   * sample = studio / legacy stills (not client-approved project media)
+   * locked = client-approved assets in public/cases/[slug]/
+   */
+  mediaStatus: "sample" | "locked";
 };
 
 /**
- * Case stories with legacy portfolio stills as cover/gallery.
- * Stills are studio work samples — swap for client-approved project media when locked.
+ * Case stories. Prefer dropping approved files in `public/cases/[slug]/`
+ * then point cover/frames there and set mediaStatus: "locked".
+ * See content/CASE-MEDIA.md.
  */
 export const caseStories: CaseStory[] = [
   {
     slug: "tanyas-dental-house",
     client: "Tanya's Dental House",
     logo: "/legacy/clients/named/tanyas-dental-house.webp",
-    cover: "/legacy/portfolio/Website-Showcase.webp",
-    gallery: ["/legacy/portfolio/project-1.webp", "/legacy/portfolio/Untitled-design-51.webp"],
+    cover: "/legacy/portfolio/Untitled-design-51.webp",
+    frames: [
+      { src: "/legacy/portfolio/Untitled-design-51.webp", alt: "Digital presence still", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-52.webp", alt: "Interface and content rhythm", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-17.webp", alt: "Brand application frame", layout: "square" },
+      { src: "/legacy/portfolio/project-5.webp", alt: "Site composition study", layout: "wide" },
+    ],
     sector: "Healthcare",
     year: "2024",
     summary: "Digital presence and brand clarity for a dental practice competing on trust.",
@@ -43,13 +61,19 @@ export const caseStories: CaseStory[] = [
       { label: "Brand Identity", href: "/capabilities/branding-creative/brand-identity" },
     ],
     solutionHref: "/solutions/launch",
+    mediaStatus: "sample",
   },
   {
     slug: "mayur-dairy",
     client: "Mayur Dairy",
     logo: "/legacy/clients/named/mayur-dairy.png",
-    cover: "/legacy/portfolio/Portfolio-Image-1.webp",
-    gallery: ["/legacy/portfolio/Untitled-design-39.webp", "/legacy/portfolio/project-2.webp"],
+    cover: "/legacy/portfolio/Untitled-design-39.webp",
+    frames: [
+      { src: "/legacy/portfolio/Untitled-design-39.webp", alt: "Brand surface study", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-39-e1744204089135.webp", alt: "Campaign still", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-3-scaled.webp", alt: "Packaging-adjacent digital", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-6-scaled.webp", alt: "Channel creative frame", layout: "wide" },
+    ],
     sector: "FMCG / Dairy",
     year: "2024",
     summary: "Brand and digital support for a dairy business building recognition beyond the neighbourhood.",
@@ -67,13 +91,19 @@ export const caseStories: CaseStory[] = [
       { label: "Visual Content", href: "/capabilities/branding-creative/visual-content" },
     ],
     solutionHref: "/solutions/growth",
+    mediaStatus: "sample",
   },
   {
     slug: "sfw-the-gym",
     client: "SFW The Gym",
     logo: "/legacy/clients/named/sfw-the-gym.webp",
     cover: "/legacy/portfolio/home_portfolio1.webp",
-    gallery: ["/legacy/portfolio/Untitled-design-52.webp", "/legacy/portfolio/project-4.webp"],
+    frames: [
+      { src: "/legacy/portfolio/home_portfolio1.webp", alt: "Campaign energy frame", layout: "wide" },
+      { src: "/legacy/portfolio/cgi04.webp", alt: "Motion / CGI cut", layout: "square" },
+      { src: "/legacy/portfolio/project-4.webp", alt: "Social and web asset", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-2.png", alt: "Offer creative", layout: "wide" },
+    ],
     sector: "Fitness",
     year: "2025",
     summary: "Stronger digital pull for a gym that sells results, not just memberships.",
@@ -91,13 +121,19 @@ export const caseStories: CaseStory[] = [
       { label: "Creative Direction", href: "/capabilities/branding-creative/creative-direction" },
     ],
     solutionHref: "/solutions/growth",
+    mediaStatus: "sample",
   },
   {
     slug: "fujitec-express",
     client: "Fujitec Express",
     logo: "/legacy/clients/named/fujitec-express.png",
     cover: "/legacy/portfolio/Portfolio-Image-2.webp",
-    gallery: ["/legacy/portfolio/project-5.webp", "/legacy/portfolio/Untitled-design-17.webp"],
+    frames: [
+      { src: "/legacy/portfolio/Portfolio-Image-2.webp", alt: "Logistics brand presence", layout: "wide" },
+      { src: "/legacy/portfolio/Website-Showcase.webp", alt: "Web system mockup language", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-16.png", alt: "Service messaging frame", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-16-1.png", alt: "Digital sales surface", layout: "square" },
+    ],
     sector: "Logistics",
     year: "2024",
     summary: "Professional digital presentation for an express logistics brand built on reliability.",
@@ -115,13 +151,19 @@ export const caseStories: CaseStory[] = [
       { label: "Brand Experience", href: "/capabilities/branding-creative/brand-experience" },
     ],
     solutionHref: "/solutions/launch",
+    mediaStatus: "sample",
   },
   {
     slug: "diet-diary",
     client: "Diet Diary",
     logo: "/legacy/clients/named/diet-diary.webp",
-    cover: "/legacy/portfolio/Untitled-design-3-scaled.webp",
-    gallery: ["/legacy/portfolio/Untitled-design-6-scaled.webp", "/legacy/portfolio/cgi04.webp"],
+    cover: "/legacy/portfolio/Untitled-design-3.png",
+    frames: [
+      { src: "/legacy/portfolio/Untitled-design-3.png", alt: "Product UX still", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-6-1-e1725973285665.png", alt: "Habit content frame", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-7.png", alt: "Conversion layout study", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-8.png", alt: "App / web surface", layout: "wide" },
+    ],
     sector: "Health / Wellness",
     year: "2025",
     summary: "Product-minded digital work for a wellness brand speaking to daily habits.",
@@ -139,13 +181,23 @@ export const caseStories: CaseStory[] = [
       { label: "Content Strategy", href: "/capabilities/growth-marketing/content-strategy" },
     ],
     solutionHref: "/solutions/scale",
+    mediaStatus: "sample",
   },
   {
     slug: "zaign",
     client: "Zaign",
     logo: "/legacy/clients/named/zaign.webp",
-    cover: "/legacy/portfolio/Untitled-design-30-3.webp",
-    gallery: ["/legacy/portfolio/Untitled-design-30-4.webp", "/legacy/portfolio/Untitled-design-45-qr5c6uske2i2nmr6q0a4om8lff29hokmcoizue4oc0.webp"],
+    cover: "/legacy/portfolio/Untitled-design-45-qr5c6uske2i2nmr6q0a4om8lff29hokmcoizue4oc0.webp",
+    frames: [
+      {
+        src: "/legacy/portfolio/Untitled-design-45-qr5c6uske2i2nmr6q0a4om8lff29hokmcoizue4oc0.webp",
+        alt: "Studio composition",
+        layout: "wide",
+      },
+      { src: "/legacy/portfolio/Untitled-design-18.png", alt: "Identity application", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-19.png", alt: "Portfolio rhythm", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-13.png", alt: "Art direction still", layout: "wide" },
+    ],
     sector: "Design / Studio",
     year: "2025",
     summary: "Identity-forward digital presence for a studio that lives on visual credibility.",
@@ -163,13 +215,23 @@ export const caseStories: CaseStory[] = [
       { label: "Website Development", href: "/capabilities/digital-products/website-development" },
     ],
     solutionHref: "/solutions/launch",
+    mediaStatus: "sample",
   },
   {
     slug: "arteve",
     client: "Arteve",
     logo: "/legacy/clients/named/arteve.webp",
     cover: "/legacy/portfolio/Untitled-design-47-1-qr5ckpwv73hbwkm6ri10ymacv0q60ym39axtobkmk0.webp",
-    gallery: ["/legacy/portfolio/Untitled-design-18.png", "/legacy/portfolio/Untitled-design-19.png"],
+    frames: [
+      {
+        src: "/legacy/portfolio/Untitled-design-47-1-qr5ckpwv73hbwkm6ri10ymacv0q60ym39axtobkmk0.webp",
+        alt: "Lifestyle campaign still",
+        layout: "wide",
+      },
+      { src: "/legacy/portfolio/Untitled-design-1.png", alt: "Product atmosphere", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-7-1.png", alt: "Brand photography direction", layout: "square" },
+      { src: "/legacy/portfolio/project-2.webp", alt: "Digital story frame", layout: "wide" },
+    ],
     sector: "Lifestyle / Brand",
     year: "2024",
     summary: "Brand and digital polish for a lifestyle label that needed presence with restraint.",
@@ -187,13 +249,19 @@ export const caseStories: CaseStory[] = [
       { label: "Visual Content", href: "/capabilities/branding-creative/visual-content" },
     ],
     solutionHref: "/solutions/growth",
+    mediaStatus: "sample",
   },
   {
     slug: "pehnaava",
     client: "Pehnaava",
     logo: "/legacy/clients/named/pehnaava.png",
-    cover: "/legacy/portfolio/Untitled-design-40.png",
-    gallery: ["/legacy/portfolio/Untitled-design-4.png", "/legacy/portfolio/Untitled-design-5.png"],
+    cover: "/legacy/portfolio/Portfolio-Image-1.webp",
+    frames: [
+      { src: "/legacy/portfolio/Portfolio-Image-1.webp", alt: "Apparel campaign still", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-40.png", alt: "Lookbook direction", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-4.png", alt: "Catalogue presentation", layout: "square" },
+      { src: "/legacy/portfolio/Untitled-design-5.png", alt: "Fashion digital shelf", layout: "wide" },
+    ],
     sector: "Fashion / Retail",
     year: "2025",
     summary: "Fashion-forward digital work for a label selling through look, feel, and trust.",
@@ -211,6 +279,37 @@ export const caseStories: CaseStory[] = [
       { label: "Website Development", href: "/capabilities/digital-products/website-development" },
     ],
     solutionHref: "/solutions/launch",
+    mediaStatus: "sample",
+  },
+  {
+    slug: "kripal-homes",
+    client: "Kripal Homes",
+    logo: "/legacy/clients/named/kripal-homes.webp",
+    cover: "/legacy/portfolio/Untitled-design-30-3.webp",
+    frames: [
+      { src: "/legacy/portfolio/Untitled-design-30-3.webp", alt: "Kripal Homes identity mark", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-30-4.webp", alt: "Identity application", layout: "square" },
+      { src: "/legacy/portfolio/project-1.webp", alt: "Property digital presentation language", layout: "wide" },
+      { src: "/legacy/portfolio/Untitled-design-16.png", alt: "Web / brochure rhythm", layout: "square" },
+    ],
+    sector: "Real Estate",
+    year: "2024",
+    summary: "Identity and digital presentation for a homes brand that needs trust at first glance.",
+    challenge:
+      "Real estate buyers decide on credibility fast. The mark and digital surfaces had to feel solid, modern, and easy to enquire against — without brochure clutter.",
+    work: [
+      "Identity system and lockup discipline",
+      "Digital presentation for listings and brand",
+      "Enquiry-minded information hierarchy",
+    ],
+    result: "A clearer brand face for people evaluating homes — and the team behind them.",
+    outcomes: ["Stronger mark presence", "Clearer digital story", "Enquiry-ready surfaces"],
+    services: [
+      { label: "Brand Identity", href: "/capabilities/branding-creative/brand-identity" },
+      { label: "Website Development", href: "/capabilities/digital-products/website-development" },
+    ],
+    solutionHref: "/solutions/launch",
+    mediaStatus: "sample",
   },
 ];
 

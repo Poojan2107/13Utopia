@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { caseStories, getCaseStory } from "@/data/case-stories";
 import { CtaBand } from "@/components/site/PageIntro";
 import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
+import { CaseFrameBento, CaseMediaNote } from "@/components/site/CaseMedia";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -40,25 +41,21 @@ export default async function CaseStoryPage({ params }: Props) {
         ]}
       />
 
-      <header className="relative min-h-[min(78dvh,720px)] overflow-hidden border-b hairline">
-        <Image
-          src={c.cover}
-          alt=""
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/55 to-void/20" />
-        <div aria-hidden className="absolute inset-0 stage-grain opacity-60" />
-        <div className="relative z-10 mx-auto flex min-h-[min(78dvh,720px)] max-w-6xl flex-col justify-end px-5 pb-12 pt-28 sm:px-8 sm:pb-16">
-          <p className="mb-6 text-sm text-cream/50">
-            <Link href="/case-stories" className="hover:text-cream">
-              Case Stories
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-cream/75">{c.client}</span>
-          </p>
+      <header className="relative min-h-[min(82dvh,780px)] overflow-hidden border-b hairline">
+        <Image src={c.cover} alt="" fill priority className="object-cover object-center" sizes="100vw" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-void/25" />
+        <div aria-hidden className="absolute inset-0 stage-grain opacity-50" />
+        <div className="relative z-10 mx-auto flex min-h-[min(82dvh,780px)] max-w-6xl flex-col justify-end px-5 pb-12 pt-28 sm:px-8 sm:pb-16">
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <p className="text-sm text-cream/50">
+              <Link href="/case-stories" className="hover:text-cream">
+                Case Stories
+              </Link>
+              <span className="mx-2">/</span>
+              <span className="text-cream/75">{c.client}</span>
+            </p>
+            <CaseMediaNote status={c.mediaStatus} />
+          </div>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end">
             {c.logo && (
               <div className="relative h-16 w-16 shrink-0 rounded-2xl border hairline bg-void/60 p-2 backdrop-blur-sm">
@@ -114,18 +111,7 @@ export default async function CaseStoryPage({ params }: Props) {
           </ul>
         </section>
 
-        {c.gallery && c.gallery.length > 0 && (
-          <section className="mt-20">
-            <h2 className="mb-8 text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Selected frames</h2>
-            <ul className="grid gap-5 sm:grid-cols-2">
-              {c.gallery.map((src) => (
-                <li key={src} className="relative aspect-[16/10] overflow-hidden rounded-[1.25rem] border hairline">
-                  <Image src={src} alt="" fill className="object-cover" sizes="(max-width: 640px) 100vw, 560px" />
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        <CaseFrameBento frames={c.frames} />
 
         <section className="mt-16 flex flex-wrap gap-10">
           <div>

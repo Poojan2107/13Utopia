@@ -17,7 +17,7 @@ export default function CaseStoriesHubPage() {
       <PageIntro
         eyebrow="Case Stories"
         title="Proof over promises."
-        deck="Selected engagements across sectors. Frames are studio work samples until client-approved project media ships."
+        deck="Selected engagements across sectors. Frames marked as samples until client-approved project media ships — drop files per content/CASE-MEDIA.md."
       />
       <ul className="grid gap-6 md:grid-cols-2">
         {caseStories.map((c, i) => (
