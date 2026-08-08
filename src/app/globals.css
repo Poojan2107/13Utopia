@@ -90,38 +90,38 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-pill);
+    border-radius: 0;
     background: var(--color-cream);
-    padding: 0.875rem 1.75rem;
-    font-size: 0.875rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--color-void);
-    transition: background-color 0.25s ease, transform 0.25s ease;
+    transition: background-color 0.25s ease;
   }
 
   .btn-primary:hover {
     background: var(--color-cream-dim);
-    transform: translateY(-1px);
   }
 
   .btn-ghost {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--color-cream) 25%, transparent);
-    padding: 0.875rem 1.75rem;
-    font-size: 0.875rem;
-    letter-spacing: 0.01em;
-    color: color-mix(in srgb, var(--color-cream) 90%, transparent);
-    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+    border-radius: 0;
+    border: 1px solid color-mix(in srgb, var(--color-cream) 30%, transparent);
+    padding: 0.875rem 1.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-cream) 85%, transparent);
+    transition: border-color 0.25s ease, color 0.25s ease;
   }
 
   .btn-ghost:hover {
     border-color: var(--color-amber-light);
     color: var(--color-amber-light);
-    background: color-mix(in srgb, var(--color-amber-light) 6%, transparent);
   }
 
   .amber-glow {

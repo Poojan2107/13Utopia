@@ -18,7 +18,7 @@ export function SiteFooter() {
       >
         <Image src="/brand/13-monogram-ghost.png" alt="" fill className="object-contain" sizes="256px" />
       </div>
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.2fr_1fr_1fr]">
+      <div className="relative mx-auto grid max-w-[1400px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
         <div className="space-y-4">
           <Link href="/" className="relative block h-8 w-[7.5rem]" aria-label={site.name}>
             <Image
@@ -75,7 +75,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="relative border-t hairline">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-5 text-xs text-cream/35 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-5 py-5 text-[0.65rem] uppercase tracking-[0.16em] text-cream/30 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
           <p>
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>

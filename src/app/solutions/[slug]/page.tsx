@@ -27,7 +27,7 @@ export default async function SolutionPage({ params }: Props) {
   return (
     <div className="relative">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-72 amber-glow opacity-45" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-[1400px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <BreadcrumbJsonLd
           items={[
             { name: "Home", href: "/" },
@@ -43,14 +43,19 @@ export default async function SolutionPage({ params }: Props) {
         />
         <PageIntro eyebrow={s.intent} title={s.title} deck={s.deck} />
 
-        <div className="grid gap-14 lg:grid-cols-2">
+        <div className="grid gap-16 border-t border-cream/10 pt-14 lg:grid-cols-2 lg:gap-24">
           <Reveal>
             <section>
-              <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Approach</h2>
-              <ol className="mt-6 space-y-5">
+              <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Approach</h2>
+              <ol className="mt-6">
                 {s.approach.map((step, i) => (
-                  <li key={step} className="flex gap-4 border-t hairline pt-5 text-cream/75">
-                    <span className="font-display text-amber-light/80">{String(i + 1).padStart(2, "0")}</span>
+                  <li
+                    key={step}
+                    className="grid gap-3 border-t border-cream/10 py-5 text-cream/70 sm:grid-cols-[4rem_1fr] sm:items-baseline"
+                  >
+                    <span className="font-display text-lg tabular-nums text-cream/20">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span className="leading-relaxed">{step}</span>
                   </li>
                 ))}
@@ -59,11 +64,16 @@ export default async function SolutionPage({ params }: Props) {
           </Reveal>
           <Reveal delay={80}>
             <section>
-              <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Outcomes</h2>
-              <ul className="mt-6 space-y-4">
-                {s.outcomes.map((o) => (
-                  <li key={o} className="flex gap-3 border-t hairline pt-4 text-cream/75">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-light" aria-hidden />
+              <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Outcomes</h2>
+              <ul className="mt-6">
+                {s.outcomes.map((o, i) => (
+                  <li
+                    key={o}
+                    className="grid gap-3 border-t border-cream/10 py-5 text-cream/70 sm:grid-cols-[4rem_1fr] sm:items-baseline"
+                  >
+                    <span className="font-display text-lg tabular-nums text-cream/20">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span className="leading-relaxed">{o}</span>
                   </li>
                 ))}
@@ -72,16 +82,17 @@ export default async function SolutionPage({ params }: Props) {
           </Reveal>
         </div>
 
-        <section className="mt-16">
-          <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Capabilities involved</h2>
-          <ul className="mt-5 flex flex-wrap gap-2">
+        <section className="mt-16 border-t border-cream/10 pt-14">
+          <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Capabilities involved</h2>
+          <ul className="mt-5 max-w-xl">
             {s.capabilityHrefs.map((c) => (
-              <li key={c.href}>
+              <li key={c.href} className="border-t border-cream/10">
                 <Link
                   href={c.href}
-                  className="inline-block rounded-full border border-cream/15 px-4 py-2 text-sm text-cream/70 transition hover:border-amber-light hover:text-amber-light"
+                  className="flex items-center justify-between py-4 text-sm text-cream/65 transition hover:text-amber-light"
                 >
-                  {c.label}
+                  <span>{c.label}</span>
+                  <span aria-hidden>→</span>
                 </Link>
               </li>
             ))}

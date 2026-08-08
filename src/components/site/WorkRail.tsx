@@ -23,7 +23,7 @@ export function WorkRail() {
           <li key={c.slug} className="w-[min(78vw,420px)] shrink-0 snap-center sm:w-[380px]">
             <Link
               href={`/case-stories/${c.slug}`}
-              className="group relative block overflow-hidden rounded-[1.25rem] border hairline"
+              className="group relative block overflow-hidden border border-cream/10"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image

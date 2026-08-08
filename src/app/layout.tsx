@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { OrganizationJsonLd } from "@/components/site/JsonLd";
+import { AmbientLight } from "@/components/site/AmbientLight";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -65,8 +66,9 @@ export default function RootLayout({
     <html lang="en" className={`${syne.variable} ${instrument.variable}`}>
       <body className="min-h-dvh flex flex-col">
         <OrganizationJsonLd />
+        <AmbientLight />
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="relative z-[2] flex-1 pt-16 lg:pt-20">{children}</main>
         <SiteFooter />
         <WhatsAppFab />
         <Analytics />

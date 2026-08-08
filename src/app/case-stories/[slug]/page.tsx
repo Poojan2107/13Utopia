@@ -41,71 +41,70 @@ export default async function CaseStoryPage({ params }: Props) {
         ]}
       />
 
-      <header className="relative min-h-[min(82dvh,780px)] overflow-hidden border-b hairline">
+      <header className="relative min-h-[min(88dvh,860px)] overflow-hidden border-b border-cream/10">
         <Image src={c.cover} alt="" fill priority className="object-cover object-center" sizes="100vw" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-void/25" />
-        <div aria-hidden className="absolute inset-0 stage-grain opacity-50" />
-        <div className="relative z-10 mx-auto flex min-h-[min(82dvh,780px)] max-w-6xl flex-col justify-end px-5 pb-12 pt-28 sm:px-8 sm:pb-16">
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <p className="text-sm text-cream/50">
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/55 to-void/20" />
+        <div aria-hidden className="absolute inset-0 stage-grain opacity-40" />
+        <div className="relative z-10 mx-auto flex min-h-[min(88dvh,860px)] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:px-8 lg:px-10 lg:pb-20">
+          <div className="mb-8 flex flex-wrap items-center gap-4">
+            <p className="text-[0.65rem] uppercase tracking-[0.22em] text-cream/45">
               <Link href="/case-stories" className="hover:text-cream">
                 Case Stories
               </Link>
-              <span className="mx-2">/</span>
-              <span className="text-cream/75">{c.client}</span>
+              <span className="mx-2 text-cream/25">/</span>
+              <span className="text-cream/70">{c.client}</span>
             </p>
             <CaseMediaNote status={c.mediaStatus} />
           </div>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end">
-            {c.logo && (
-              <div className="relative h-16 w-16 shrink-0 rounded-2xl border hairline bg-void/60 p-2 backdrop-blur-sm">
-                <Image src={c.logo} alt={`${c.client} logo`} fill className="object-contain p-2" sizes="64px" />
-              </div>
-            )}
-            <div className="min-w-0 flex-1">
-              <p className="text-[0.7rem] uppercase tracking-[0.28em] text-amber-light/85">
-                {c.sector}
-                {c.year ? ` · ${c.year}` : ""}
-              </p>
-              <h1 className="mt-3 font-display text-4xl tracking-tight text-cream text-balance sm:text-6xl">{c.client}</h1>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-cream/65 sm:text-lg">{c.summary}</p>
-            </div>
-          </div>
+          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/85">
+            {c.sector}
+            {c.year ? ` · ${c.year}` : ""}
+          </p>
+          <h1 className="mt-4 max-w-4xl font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] tracking-tight text-cream">
+            {c.client}
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/60 sm:text-lg">{c.summary}</p>
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-20">
+      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         {c.outcomes && c.outcomes.length > 0 && (
-          <ul className="mb-14 flex flex-wrap gap-3">
+          <ul className="mb-16 grid gap-px border border-cream/10 bg-cream/10 sm:grid-cols-2 lg:grid-cols-4">
             {c.outcomes.map((o) => (
-              <li
-                key={o}
-                className="rounded-full border border-amber/30 bg-amber/10 px-4 py-2 text-xs tracking-wide text-amber-light"
-              >
+              <li key={o} className="bg-void px-5 py-6 text-sm leading-snug text-amber-light/90">
                 {o}
               </li>
             ))}
           </ul>
         )}
 
-        <div className="grid gap-14 lg:grid-cols-2">
+        <div className="grid gap-16 border-t border-cream/10 pt-14 lg:grid-cols-2 lg:gap-24">
           <section>
-            <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Challenge</h2>
-            <p className="mt-5 text-lg leading-relaxed text-cream/70">{c.challenge}</p>
+            <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Challenge</h2>
+            <p className="mt-6 font-display text-2xl leading-snug tracking-tight text-cream/85 sm:text-3xl">
+              {c.challenge}
+            </p>
           </section>
           <section>
-            <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Result</h2>
-            <p className="mt-5 text-lg leading-relaxed text-cream/70">{c.result}</p>
+            <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Result</h2>
+            <p className="mt-6 font-display text-2xl leading-snug tracking-tight text-cream/85 sm:text-3xl">
+              {c.result}
+            </p>
           </section>
         </div>
 
-        <section className="mt-16">
-          <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">What we did</h2>
-          <ul className="mt-6 space-y-4">
-            {c.work.map((w) => (
-              <li key={w} className="flex gap-4 border-t hairline pt-4 text-cream/75">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-light" aria-hidden />
-                <span className="text-base leading-relaxed">{w}</span>
+        <section className="mt-20 border-t border-cream/10 pt-14">
+          <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">What we did</h2>
+          <ul className="mt-8">
+            {c.work.map((w, i) => (
+              <li
+                key={w}
+                className="grid gap-3 border-t border-cream/10 py-5 text-cream/70 sm:grid-cols-[4rem_1fr] sm:items-baseline"
+              >
+                <span className="font-display text-lg tabular-nums text-cream/20">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base leading-relaxed sm:text-lg">{w}</span>
               </li>
             ))}
           </ul>
@@ -113,17 +112,18 @@ export default async function CaseStoryPage({ params }: Props) {
 
         <CaseFrameBento frames={c.frames} />
 
-        <section className="mt-16 flex flex-wrap gap-10">
+        <section className="mt-20 grid gap-12 border-t border-cream/10 pt-14 sm:grid-cols-2">
           <div>
-            <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Services</h2>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Services</h2>
+            <ul className="mt-5 flex flex-col">
               {c.services.map((s) => (
-                <li key={s.href}>
+                <li key={s.href} className="border-t border-cream/10">
                   <Link
                     href={s.href}
-                    className="inline-block rounded-full border border-cream/15 px-4 py-2 text-sm text-cream/70 transition hover:border-amber-light hover:text-amber-light"
+                    className="flex items-center justify-between py-4 text-sm text-cream/65 transition hover:text-amber-light"
                   >
-                    {s.label}
+                    <span>{s.label}</span>
+                    <span aria-hidden>→</span>
                   </Link>
                 </li>
               ))}
@@ -131,10 +131,10 @@ export default async function CaseStoryPage({ params }: Props) {
           </div>
           {c.solutionHref && (
             <div>
-              <h2 className="text-[0.7rem] uppercase tracking-[0.24em] text-amber-light/80">Related solution</h2>
+              <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Related solution</h2>
               <Link
                 href={c.solutionHref}
-                className="link-underline mt-4 inline-block text-sm text-cream/70 hover:text-cream"
+                className="mt-5 inline-flex border border-cream/25 px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-cream/80 transition hover:border-amber-light hover:text-amber-light"
               >
                 View path →
               </Link>
@@ -143,24 +143,31 @@ export default async function CaseStoryPage({ params }: Props) {
         </section>
 
         {others.length > 0 && (
-          <section className="mt-24 border-t hairline pt-14">
-            <h2 className="mb-8 font-display text-3xl text-cream">More stories</h2>
-            <ul className="grid gap-5 sm:grid-cols-3">
+          <section className="mt-24 border-t border-cream/10 pt-14">
+            <div className="mb-10 flex items-end justify-between gap-4">
+              <h2 className="font-display text-[clamp(2rem,4vw,3rem)] tracking-tight text-cream">More stories</h2>
+              <Link href="/case-stories" className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/40 hover:text-amber-light">
+                All →
+              </Link>
+            </div>
+            <ul className="grid gap-px border border-cream/10 bg-cream/10 sm:grid-cols-3">
               {others.map((o) => (
-                <li key={o.slug}>
-                  <Link href={`/case-stories/${o.slug}`} className="group block overflow-hidden rounded-[1.25rem] border hairline">
+                <li key={o.slug} className="bg-void">
+                  <Link href={`/case-stories/${o.slug}`} className="group block">
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <Image
                         src={o.cover}
                         alt=""
                         fill
-                        className="case-media object-cover"
-                        sizes="(max-width: 640px) 100vw, 360px"
+                        className="case-media object-cover transition duration-700 group-hover:scale-[1.04]"
+                        sizes="(max-width: 640px) 100vw, 33vw"
                       />
                     </div>
-                    <div className="p-4">
+                    <div className="border-t border-cream/10 px-5 py-5">
                       <p className="text-[0.65rem] uppercase tracking-[0.16em] text-cream/40">{o.sector}</p>
-                      <p className="mt-1 font-display text-lg text-cream">{o.client}</p>
+                      <p className="mt-2 font-display text-xl text-cream transition group-hover:text-amber-light">
+                        {o.client}
+                      </p>
                     </div>
                   </Link>
                 </li>

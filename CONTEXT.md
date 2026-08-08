@@ -1,7 +1,7 @@
 # 13UTOPiA — Project Context
 
 > Read before changing site code.  
-> Last updated: 2026-08-07
+> Last updated: 2026-08-08
 
 ---
 
@@ -42,7 +42,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Proof + ops (Phase 12):** Analytics, honest metrics, people seats, work rail, Formspree-ready connect. Client portraits/media still pending drops. Canada deferred.
+**Signature UI (Phase 13):** Asymmetric compositions, stacked work rows, giant indexes, ambient light, square CTAs — less template, more studio. Assets still deferred.
 
 ---
 
@@ -59,7 +59,8 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 9. Awwwards presence UI ✓  
 10. Interior presence sync ✓  
 11. Case media curation ✓  
-12. Proof + ops lift ✓ 
+12. Proof + ops lift ✓  
+13. **Signature UI system** ← now 
 
 ---
 

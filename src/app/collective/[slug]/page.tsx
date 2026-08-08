@@ -27,7 +27,7 @@ export default async function CollectiveLeafPage({ params }: Props) {
   return (
     <div className="relative">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-64 amber-glow opacity-40" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-[1400px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <BreadcrumbJsonLd
           items={[
             { name: "Home", href: "/" },
@@ -42,23 +42,25 @@ export default async function CollectiveLeafPage({ params }: Props) {
           ]}
         />
         <PageIntro eyebrow="Collective" title={p.title} deck={p.deck} />
-        <ul className="max-w-xl space-y-0">
+        <ul className="max-w-3xl border-t border-cream/10">
           {p.points.map((point, i) => (
             <li key={point}>
               <Reveal delay={i * 50}>
-                <div className="flex gap-4 border-t hairline py-5 text-cream/75">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-light" aria-hidden />
-                  <span className="text-base leading-relaxed">{point}</span>
+                <div className="grid gap-3 border-t border-cream/10 py-6 text-cream/70 sm:grid-cols-[4rem_1fr] sm:items-baseline">
+                  <span className="font-display text-lg tabular-nums text-cream/20">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-base leading-relaxed sm:text-lg">{point}</span>
                 </div>
               </Reveal>
             </li>
           ))}
         </ul>
-        <div className="mt-10 flex flex-wrap gap-4 text-sm">
-          <Link href="/careers" className="link-underline text-cream/55 hover:text-cream">
+        <div className="mt-10 flex flex-wrap gap-6 text-[0.7rem] uppercase tracking-[0.2em] text-cream/40">
+          <Link href="/careers" className="transition hover:text-amber-light">
             Careers →
           </Link>
-          <Link href="/perspective/team" className="link-underline text-cream/55 hover:text-cream">
+          <Link href="/perspective/team" className="transition hover:text-amber-light">
             Team →
           </Link>
         </div>

@@ -13,75 +13,76 @@ export const metadata: Metadata = {
 
 export default function ConnectPage() {
   return (
-    <div className="relative">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-80 amber-glow opacity-55" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-80 stage-grain" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+    <div>
+      <div className="mx-auto max-w-[1400px] px-5 pb-12 pt-14 sm:px-8 lg:px-10 lg:pt-20">
         <FaqJsonLd faqs={connectFaqs} />
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <div className="space-y-10">
-            <div className="space-y-5">
-              <p className="text-[0.7rem] uppercase tracking-[0.28em] text-amber-light/85">Connect</p>
-              <h1 className="font-display text-4xl tracking-tight text-cream text-balance sm:text-5xl lg:text-6xl">
-                Let&apos;s talk business — you first.
-              </h1>
-              <p className="max-w-md text-base leading-relaxed text-cream/55 sm:text-lg">
-                Share a bit about the work. We&apos;ll come back with a discovery path — not a generic pitch deck dump.
-              </p>
-            </div>
-            <div className="space-y-5 text-sm">
-              <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-cream/35">Email</p>
-                <a href={`mailto:${site.email}`} className="mt-1 inline-block text-cream transition hover:text-amber-light">
-                  {site.email}
-                </a>
-              </div>
-              <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-cream/35">Phone</p>
-                <a href={`tel:${site.phoneTel}`} className="mt-1 inline-block text-cream transition hover:text-amber-light">
-                  {site.phone}
-                </a>
-              </div>
-              <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-cream/35">WhatsApp</p>
-                <a
-                  href={site.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-1 inline-block text-cream transition hover:text-amber-light"
-                >
-                  Message us
-                </a>
-              </div>
-              <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-cream/35">India office</p>
-                <address className="mt-1 not-italic leading-relaxed text-cream/60">
-                  {site.address.lines.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </address>
-              </div>
-            </div>
-          </div>
-          <ConnectForm />
+        <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Connect</p>
+        <div className="mt-5 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+          <h1 className="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-tight text-cream">
+            Let&apos;s talk
+            <br />
+            business.
+          </h1>
+          <p className="max-w-sm text-base leading-relaxed text-cream/50 lg:text-right">
+            Share the outcome. We&apos;ll come back with a discovery path — not a generic pitch dump.
+          </p>
         </div>
-
-        <section className="mt-24 border-t hairline pt-16">
-          <h2 className="font-display text-3xl tracking-tight text-cream sm:text-4xl">Questions, answered</h2>
-          <dl className="mt-10 grid gap-8 md:grid-cols-2">
-            {connectFaqs.map((f, i) => (
-              <Reveal key={f.question} delay={i * 50}>
-                <div className="border-t hairline pt-6">
-                  <dt className="text-sm font-medium text-cream">{f.question}</dt>
-                  <dd className="mt-3 text-sm leading-relaxed text-cream/55">{f.answer}</dd>
-                </div>
-              </Reveal>
-            ))}
-          </dl>
-        </section>
       </div>
+
+      <div className="border-y border-cream/10">
+        <div className="mx-auto grid max-w-[1400px] lg:grid-cols-[0.85fr_1.15fr]">
+          <aside className="space-y-8 border-cream/10 px-5 py-12 sm:px-8 lg:border-r lg:px-10 lg:py-16">
+            {(
+              [
+                { label: "Email", node: <a href={`mailto:${site.email}`}>{site.email}</a> },
+                { label: "Phone", node: <a href={`tel:${site.phoneTel}`}>{site.phone}</a> },
+                {
+                  label: "WhatsApp",
+                  node: (
+                    <a href={site.whatsapp} target="_blank" rel="noreferrer">
+                      Message us
+                    </a>
+                  ),
+                },
+              ] as const
+            ).map((row) => (
+              <div key={row.label} className="border-t border-cream/10 pt-5">
+                <p className="text-[0.65rem] uppercase tracking-[0.22em] text-cream/35">{row.label}</p>
+                <div className="mt-2 text-cream transition [&_a]:hover:text-amber-light">{row.node}</div>
+              </div>
+            ))}
+            <div className="border-t border-cream/10 pt-5">
+              <p className="text-[0.65rem] uppercase tracking-[0.22em] text-cream/35">India office</p>
+              <address className="mt-2 not-italic leading-relaxed text-cream/55">
+                {site.address.lines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </address>
+            </div>
+          </aside>
+          <div className="px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+            <ConnectForm />
+          </div>
+        </div>
+      </div>
+
+      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] tracking-tight text-cream">
+          Questions, answered
+        </h2>
+        <dl className="mt-12">
+          {connectFaqs.map((f, i) => (
+            <Reveal key={f.question} delay={i * 40}>
+              <div className="grid gap-3 border-t border-cream/10 py-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+                <dt className="font-display text-xl text-cream sm:text-2xl">{f.question}</dt>
+                <dd className="text-sm leading-relaxed text-cream/50 sm:text-base">{f.answer}</dd>
+              </div>
+            </Reveal>
+          ))}
+        </dl>
+      </section>
     </div>
   );
 }

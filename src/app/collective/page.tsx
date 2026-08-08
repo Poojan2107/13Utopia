@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { collectiveHub, collectivePages } from "@/data/collective";
 import { studioPeople } from "@/data/people";
-import { CtaBand, PageIntro } from "@/components/site/PageIntro";
+import { CtaBand } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
 import { PeopleGrid } from "@/components/site/People";
 
@@ -13,49 +13,51 @@ export const metadata: Metadata = {
 
 export default function CollectiveHubPage() {
   return (
-    <div className="relative">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-72 amber-glow opacity-50" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-        <PageIntro eyebrow="Collective" title={collectiveHub.title} deck={collectiveHub.deck} />
-
-        <Reveal>
-          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-[0.65rem] uppercase tracking-[0.24em] text-amber-light/80">Seats</p>
-              <h2 className="mt-2 font-display text-3xl text-cream">Who owns the rooms</h2>
-            </div>
-            <p className="max-w-sm text-sm text-cream/45">
-              Initials until portraits land in <code className="text-cream/55">public/team/</code>.
-            </p>
-          </div>
-        </Reveal>
-        <PeopleGrid people={studioPeople} />
-
-        <ul className="mt-20 grid gap-4 sm:grid-cols-2">
-          {collectivePages.map((p, i) => (
-            <li key={p.slug}>
-              <Reveal delay={i * 60}>
-                <Link
-                  href={`/collective/${p.slug}`}
-                  className="group flex h-full flex-col justify-between rounded-[1.35rem] border hairline p-7 transition hover:border-amber/40 sm:p-8"
-                >
-                  <div>
-                    <p className="font-display text-sm tabular-nums text-amber-light/55">
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <h2 className="mt-4 font-display text-3xl text-cream transition group-hover:text-amber-light">
-                      {p.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-cream/50">{p.deck}</p>
-                  </div>
-                  <p className="mt-8 text-sm text-cream/35 transition group-hover:text-amber-light">Enter →</p>
-                </Link>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-        <CtaBand title="Join the collective" />
+    <div>
+      <div className="mx-auto max-w-[1400px] px-5 pb-12 pt-14 sm:px-8 lg:px-10 lg:pt-20">
+        <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Collective</p>
+        <div className="mt-5 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <h1 className="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-tight text-cream">
+            The rooms
+            <br />
+            inside.
+          </h1>
+          <p className="max-w-sm text-base leading-relaxed text-cream/50 lg:text-right">{collectiveHub.deck}</p>
+        </div>
       </div>
+
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10">
+        <p className="mb-8 text-[0.65rem] uppercase tracking-[0.24em] text-cream/35">Seats</p>
+        <PeopleGrid people={studioPeople} />
+      </div>
+
+      <ul className="mt-20">
+        {collectivePages.map((p, i) => (
+          <li key={p.slug} className="border-t border-cream/10">
+            <Reveal delay={i * 40}>
+              <Link
+                href={`/collective/${p.slug}`}
+                className="group mx-auto grid max-w-[1400px] gap-4 px-5 py-10 sm:px-8 lg:grid-cols-[8rem_1fr_auto] lg:items-baseline lg:px-10"
+              >
+                <span className="font-display text-4xl tabular-nums text-cream/15 transition group-hover:text-amber-light/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h2 className="font-display text-3xl tracking-tight text-cream transition group-hover:text-amber-light sm:text-4xl">
+                    {p.title}
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm text-cream/45">{p.deck}</p>
+                </div>
+                <span className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/30 transition group-hover:text-amber-light">
+                  Enter →
+                </span>
+              </Link>
+            </Reveal>
+          </li>
+        ))}
+      </ul>
+
+      <CtaBand title="Join the collective" />
     </div>
   );
 }

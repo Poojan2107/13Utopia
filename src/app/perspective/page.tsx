@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { perspectiveHub, perspectivePages } from "@/data/perspective";
-import { CtaBand, PageIntro } from "@/components/site/PageIntro";
+import { CtaBand } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
 
 export const metadata: Metadata = {
@@ -11,29 +11,42 @@ export const metadata: Metadata = {
 
 export default function PerspectiveHubPage() {
   return (
-    <div className="relative">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-72 amber-glow opacity-50" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-        <PageIntro eyebrow="Perspective" title={perspectiveHub.title} deck={perspectiveHub.deck} />
-        <ul className="divide-y divide-cream/10 border-y border-cream/10">
+    <div>
+      <div className="mx-auto max-w-[1400px] px-5 pb-16 pt-14 sm:px-8 lg:grid lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-10 lg:pb-24 lg:pt-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Perspective</p>
+          <h1 className="mt-5 font-display text-[clamp(3rem,7vw,5.5rem)] leading-[0.92] tracking-tight text-cream">
+            How we
+            <br />
+            think.
+          </h1>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-cream/50">{perspectiveHub.deck}</p>
+        </div>
+
+        <ul className="mt-14 space-y-0 border-t border-cream/10 lg:mt-0">
           {perspectivePages.map((p, i) => (
-            <li key={p.slug}>
-              <Reveal delay={i * 45}>
-                <Link
-                  href={`/perspective/${p.slug}`}
-                  className="group grid gap-3 py-8 transition sm:grid-cols-[1fr_1.2fr] sm:items-baseline sm:gap-12"
-                >
-                  <h2 className="font-display text-2xl text-cream transition group-hover:text-amber-light sm:text-3xl">
+            <li key={p.slug} className="border-b border-cream/10">
+              <Reveal delay={i * 40}>
+                <Link href={`/perspective/${p.slug}`} className="group block py-8 transition sm:py-10">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="font-display text-xs tabular-nums text-cream/25">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[0.65rem] uppercase tracking-[0.2em] text-cream/25 transition group-hover:text-amber-light">
+                      Read →
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-display text-3xl tracking-tight text-cream transition group-hover:text-amber-light sm:text-4xl lg:text-5xl">
                     {p.title}
                   </h2>
-                  <p className="text-sm leading-relaxed text-cream/50 sm:text-right">{p.deck}</p>
+                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-cream/45">{p.deck}</p>
                 </Link>
               </Reveal>
             </li>
           ))}
         </ul>
-        <CtaBand title="Meet the people behind the work" />
       </div>
+      <CtaBand title="Meet the people behind the work" />
     </div>
   );
 }
