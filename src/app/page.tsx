@@ -1,12 +1,15 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { processSteps, site } from "@/data/site";
 import { capabilities } from "@/data/capabilities";
 import { solutions } from "@/data/solutions";
 import { caseStories } from "@/data/case-stories";
+import { studioPeople } from "@/data/people";
 import clients from "@/data/clients.json";
 import testimonials from "@/data/testimonials.json";
 import { Reveal } from "@/components/site/Reveal";
+import { WorkRail } from "@/components/site/WorkRail";
+import { PeopleStrip } from "@/components/site/People";
 
 export default function HomePage() {
   const featured = caseStories.slice(0, 4);
@@ -15,7 +18,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1 — Brand stage */}
       <section className="relative flex min-h-[min(100dvh,920px)] flex-col overflow-hidden border-b hairline">
         <div aria-hidden className="pointer-events-none absolute inset-0 amber-glow" />
         <div aria-hidden className="pointer-events-none absolute inset-0 stage-grain" />
@@ -65,7 +67,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2 — Work first */}
       <section id="work" className="border-b hairline py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
@@ -122,7 +123,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3 — Clients marquee */}
+      <section className="border-b hairline py-14 sm:py-16" aria-label="More work">
+        <div className="mx-auto mb-8 max-w-6xl px-5 sm:px-8">
+          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-cream/40">Swipe the reel</p>
+        </div>
+        <WorkRail />
+      </section>
+
       <section className="overflow-hidden border-b hairline py-12" aria-label="Clients">
         <p className="mb-8 text-center text-[0.65rem] uppercase tracking-[0.28em] text-cream/35">Trusted by teams who ship</p>
         <div className="relative">
@@ -138,7 +145,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4 — POV band */}
       <section className="relative overflow-hidden border-b hairline py-24 sm:py-32">
         <div aria-hidden className="pointer-events-none absolute inset-0 amber-glow opacity-40" />
         <Reveal>
@@ -157,7 +163,6 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      {/* 5 — Capabilities editorial */}
       <section id="capabilities" className="border-b hairline py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
@@ -192,7 +197,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6 — Solutions strip */}
       <section className="border-b hairline py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
@@ -224,7 +228,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7 — Process */}
       <section className="border-b hairline py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
@@ -247,13 +250,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8 — Single featured quote + quiet metrics */}
+      <section className="border-b hairline py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <Reveal>
+            <div className="mb-12 text-center">
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Collective</p>
+              <h2 className="mt-4 font-display text-4xl tracking-tight text-cream sm:text-5xl">The rooms behind the work.</h2>
+              <p className="mx-auto mt-4 max-w-lg text-sm text-cream/50">
+                Seats are live. Portraits drop as we lock them — structure first, faces next.
+              </p>
+            </div>
+          </Reveal>
+          <PeopleStrip people={studioPeople} />
+          <div className="mt-10 text-center">
+            <Link href="/collective" className="link-underline text-sm text-cream/55 hover:text-cream">
+              Meet the collective →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="border-b hairline py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
             <figure className="mx-auto max-w-3xl text-center">
               <blockquote className="font-display text-2xl leading-snug tracking-tight text-cream text-balance sm:text-4xl">
-                “{quote.quote}”
+                &ldquo;{quote.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-8 text-sm text-cream/45">
                 <span className="text-cream/75">{quote.name}</span> — {quote.role}, {quote.company}
@@ -261,20 +283,22 @@ export default function HomePage() {
             </figure>
           </Reveal>
           <Reveal delay={120}>
-            <dl className="mx-auto mt-16 flex max-w-2xl flex-wrap justify-center gap-10 border-t hairline pt-10 sm:gap-16">
-              {site.metrics.map((m) => (
-                <div key={m.label} className="text-center">
-                  <dt className="sr-only">{m.label}</dt>
-                  <dd className="font-display text-3xl text-cream">{m.value}</dd>
-                  <p className="mt-1 text-[0.65rem] uppercase tracking-[0.2em] text-cream/40">{m.label}</p>
-                </div>
-              ))}
-            </dl>
+            <div className="mx-auto mt-16 max-w-2xl border-t hairline pt-10">
+              <dl className="flex flex-wrap justify-center gap-10 sm:gap-16">
+                {site.metrics.map((m) => (
+                  <div key={m.label} className="text-center">
+                    <dt className="sr-only">{m.label}</dt>
+                    <dd className="font-display text-3xl text-cream">{m.value}</dd>
+                    <p className="mt-1 text-[0.65rem] uppercase tracking-[0.2em] text-cream/40">{m.label}</p>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-6 text-center text-[0.7rem] text-cream/35">{site.metricsNote}</p>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      {/* 9 — Close */}
       <section className="relative overflow-hidden py-28 sm:py-36">
         <div aria-hidden className="pointer-events-none absolute inset-0 amber-glow" />
         <div aria-hidden className="pointer-events-none absolute inset-0 stage-grain" />

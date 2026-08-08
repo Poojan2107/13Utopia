@@ -22,10 +22,12 @@ export const site = {
     country: "India",
   },
   metrics: [
-    { value: "200+", label: "Projects" },
-    { value: "99%", label: "Success rate" },
-    { value: "18+", label: "Countries" },
+    { value: "200+", label: "Projects shipped" },
+    { value: "Ongoing", label: "Client partnerships" },
+    { value: "18+", label: "Countries reached" },
   ],
+  /** Shown near metrics until independently verified */
+  metricsNote: "Studio figures — verified metrics publish when audited.",
   social: {
     instagram: "https://www.instagram.com/13_utopia_/",
     linkedin: "https://www.linkedin.com/company/13utopia/",

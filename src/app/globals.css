@@ -203,6 +203,21 @@
     background-size: 100% 1px;
   }
 
+  .work-rail {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--color-amber-light) 40%, transparent) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .work-rail::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .work-rail::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-amber-light) 45%, transparent);
+    border-radius: 999px;
+  }
+
   .scroll-cue {
     animation: scroll-cue 2.2s ease-in-out infinite;
   }

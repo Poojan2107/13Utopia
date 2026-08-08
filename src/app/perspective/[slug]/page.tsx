@@ -5,6 +5,8 @@ import { getPerspectivePage, perspectivePages } from "@/data/perspective";
 import { Crumb, CtaBand, PageIntro } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
 import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
+import { PeopleGrid } from "@/components/site/People";
+import { studioPeople } from "@/data/people";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -42,6 +44,18 @@ export default async function PerspectiveLeafPage({ params }: Props) {
           ]}
         />
         <PageIntro eyebrow="Perspective" title={p.title} deck={p.deck} />
+        {slug === "team" && (
+          <div className="mb-16">
+            <PeopleGrid people={studioPeople} />
+            <p className="mt-6 text-sm text-cream/40">
+              Portraits publish as we lock them — see also{" "}
+              <Link href="/collective" className="link-underline text-cream/60 hover:text-cream">
+                Collective
+              </Link>
+              .
+            </p>
+          </div>
+        )}
         <div className="max-w-2xl space-y-12">
           {p.sections.map((s, i) => (
             <Reveal key={s.heading} delay={i * 60}>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Syne } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { site } from "@/data/site";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -67,6 +69,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <WhatsAppFab />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

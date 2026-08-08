@@ -42,7 +42,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Case media (Phase 11):** Curated frames, bento galleries, sample disclaimer, `public/cases/` swap path. Client-locked stills still pending drop. Canada / verified metrics deferred.
+**Proof + ops (Phase 12):** Analytics, honest metrics, people seats, work rail, Formspree-ready connect. Client portraits/media still pending drops. Canada deferred.
 
 ---
 
@@ -58,7 +58,8 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 8. Launch readiness ✓  
 9. Awwwards presence UI ✓  
 10. Interior presence sync ✓  
-11. Case media curation ✓ (client-locked drops still pending) 
+11. Case media curation ✓  
+12. Proof + ops lift ✓ 
 
 ---
 

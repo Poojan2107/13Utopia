@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { collectiveHub, collectivePages } from "@/data/collective";
+import { studioPeople } from "@/data/people";
 import { CtaBand, PageIntro } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
+import { PeopleGrid } from "@/components/site/People";
 
 export const metadata: Metadata = {
   title: "Collective",
@@ -15,7 +17,21 @@ export default function CollectiveHubPage() {
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-72 amber-glow opacity-50" />
       <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
         <PageIntro eyebrow="Collective" title={collectiveHub.title} deck={collectiveHub.deck} />
-        <ul className="grid gap-4 sm:grid-cols-2">
+
+        <Reveal>
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[0.65rem] uppercase tracking-[0.24em] text-amber-light/80">Seats</p>
+              <h2 className="mt-2 font-display text-3xl text-cream">Who owns the rooms</h2>
+            </div>
+            <p className="max-w-sm text-sm text-cream/45">
+              Initials until portraits land in <code className="text-cream/55">public/team/</code>.
+            </p>
+          </div>
+        </Reveal>
+        <PeopleGrid people={studioPeople} />
+
+        <ul className="mt-20 grid gap-4 sm:grid-cols-2">
           {collectivePages.map((p, i) => (
             <li key={p.slug}>
               <Reveal delay={i * 60}>
