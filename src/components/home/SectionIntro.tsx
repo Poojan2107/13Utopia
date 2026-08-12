@@ -30,7 +30,7 @@ export function SectionIntro({
       {action ? (
         <Link
           href={action.href}
-          className="inline-flex w-fit rounded-full border border-cream/20 px-5 py-2 text-[0.7rem] uppercase tracking-[0.2em] text-cream/50 transition hover:border-amber-light hover:text-amber-light"
+          className="inline-flex w-fit rounded-[var(--radius-square)] border border-cream/20 px-5 py-2.5 text-[0.7rem] uppercase tracking-[0.2em] text-cream/50 transition hover:border-amber-light hover:text-amber-light"
         >
           {action.label}
         </Link>

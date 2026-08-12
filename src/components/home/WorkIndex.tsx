@@ -22,10 +22,10 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
       mm.add("(min-width: 1024px)", () => {
         ScrollTrigger.create({
           trigger: pin.current,
-          start: "top 6rem",
-          end: `+=${Math.max(stories.length, 3) * 70}vh`,
+          start: "top 5.5rem",
+          end: `+=${Math.max(stories.length, 3) * 62}vh`,
           pin: true,
-          scrub: 0.65,
+          scrub: 0.7,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
@@ -60,36 +60,24 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
 
         <ul className="work-rail mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:hidden">
           {stories.map((c, i) => (
-            <li key={c.slug} className="w-[85vw] max-w-[380px] shrink-0 snap-center">
+            <li key={c.slug} className="w-[82vw] max-w-[360px] shrink-0 snap-center">
               <Link href={`/case-stories/${c.slug}`} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-cream/10 bg-void-soft">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-soft)] border border-cream/10 bg-void-soft">
                   <Image
                     src={c.cover}
                     alt=""
                     fill
                     className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                    sizes="85vw"
+                    sizes="82vw"
                   />
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <p className="text-[0.62rem] uppercase tracking-[0.2em] text-amber-light">
-                        {String(i + 1).padStart(2, "0")} · {c.sector}
-                      </p>
-                      {c.year && (
-                        <span className="text-[0.6rem] text-cream/40 font-mono">{c.year}</span>
-                      )}
-                    </div>
-                    <h3 className="font-serif text-2xl text-cream group-hover:text-amber-light transition-colors">{c.client}</h3>
-                    {c.services && c.services.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {c.services.slice(0, 2).map((s) => (
-                          <span key={s.label} className="rounded-full bg-void/70 border border-cream/15 px-2.5 py-0.5 text-[0.58rem] text-cream/70">
-                            {s.label}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 space-y-1.5 p-6">
+                    <p className="text-[0.62rem] uppercase tracking-[0.2em] text-amber-light">
+                      {String(i + 1).padStart(2, "0")} · {c.sector}
+                    </p>
+                    <h3 className="font-serif text-2xl text-cream transition-colors group-hover:text-amber-light">
+                      {c.client}
+                    </h3>
                   </div>
                 </div>
               </Link>
@@ -99,79 +87,48 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
 
         <div
           ref={pin}
-          className="mt-14 hidden gap-16 lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-center"
+          className="relative mt-16 hidden min-h-[calc(100vh-7.5rem)] lg:grid lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1.62fr)] lg:items-stretch lg:gap-10"
         >
-          <div>
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-light/30 bg-amber/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-amber-light">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-light" />
-                  Case {String(active + 1).padStart(2, "0")} / {String(stories.length).padStart(2, "0")}
-                </span>
-                <span className="text-[0.65rem] uppercase tracking-[0.24em] text-cream/40">
-                  {current.sector} {current.year ? `· ${current.year}` : ""}
-                </span>
-              </div>
-              {current.logo && (
-                <div className="relative h-7 w-28 shrink-0 grayscale opacity-85 hover:grayscale-0 transition-all">
-                  <Image
-                    src={current.logo}
-                    alt={current.client}
-                    fill
-                    className="object-contain object-right"
-                  />
-                </div>
-              )}
-            </div>
+          <div className="relative flex flex-col justify-between py-1">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -left-4 top-0 font-serif text-[clamp(7rem,14vw,12rem)] leading-none tracking-[-0.08em] text-cream/[0.06] tabular-nums"
+            >
+              {String(active + 1).padStart(2, "0")}
+            </span>
 
-            <h3 className="mt-4 font-serif text-[clamp(2.4rem,4vw,3.6rem)] leading-[1.05] tracking-tight text-cream">
-              {current.client}
-            </h3>
-            
-            <p className="mt-5 max-w-md text-base leading-relaxed text-cream/60">{current.summary}</p>
+            <p className="relative text-[0.62rem] uppercase tracking-[0.28em] text-amber-light">
+              {String(active + 1).padStart(2, "0")} / {String(stories.length).padStart(2, "0")}
+            </p>
 
-            {current.outcomes && current.outcomes.length > 0 && (
-              <div className="mt-6 space-y-2">
-                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-amber-light/75">Verified Outcomes</p>
-                <div className="flex flex-wrap gap-2">
-                  {current.outcomes.map((o) => (
-                    <span key={o} className="inline-flex items-center gap-1.5 rounded-full border border-cream/12 bg-cream/5 px-3 py-1 text-[0.65rem] text-cream/80">
-                      <span className="text-amber-light">✓</span> {o}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="mt-8 flex items-center gap-4">
-              <Link
-                href={`/case-stories/${current.slug}`}
-                className="btn-primary group"
-              >
-                <span>Open story</span>
-                <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </Link>
-            </div>
-
-            <ul className="mt-10 max-w-md">
+            <ul className="relative mt-auto">
               {stories.map((c, i) => (
-                <li key={c.slug} className="border-b border-cream/10 last:border-b-0">
+                <li key={c.slug} className="border-t border-cream/10 last:border-b">
                   <button
                     type="button"
                     onMouseEnter={() => setActive(i)}
                     onFocus={() => setActive(i)}
                     onClick={() => setActive(i)}
-                    className={`flex w-full items-center justify-between gap-4 py-3.5 text-left transition ${
-                      i === active ? "text-cream pl-2" : "text-cream/35 hover:text-cream/70"
+                    className={`flex w-full items-baseline justify-between gap-3 py-3.5 text-left transition-colors duration-300 ${
+                      i === active ? "text-cream" : "text-cream/28 hover:text-cream/60"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className={`font-mono text-xs ${i === active ? "text-amber-light font-bold" : "text-cream/20"}`}>
+                    <span className="flex min-w-0 items-baseline gap-3">
+                      <span
+                        className={`font-mono text-[0.65rem] tabular-nums ${
+                          i === active ? "text-amber-light" : "text-cream/20"
+                        }`}
+                      >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="font-serif text-lg tracking-tight">{c.client}</span>
-                    </div>
-                    <span className="text-[0.62rem] uppercase tracking-[0.16em] text-cream/30">{c.sector}</span>
+                      <span
+                        className={`truncate font-serif tracking-tight transition-all duration-300 ${
+                          i === active ? "text-[1.35rem] text-amber-light" : "text-lg"
+                        }`}
+                      >
+                        {c.client}
+                      </span>
+                    </span>
                   </button>
                 </li>
               ))}
@@ -180,7 +137,7 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
 
           <Link
             href={`/case-stories/${current.slug}`}
-            className="group relative block min-h-[min(72vh,760px)] overflow-hidden rounded-[2rem] border border-cream/15 gold-rim shadow-2xl"
+            className="group relative block min-h-[calc(100vh-8.5rem)] overflow-hidden rounded-[var(--radius-soft)]"
           >
             {stories.map((c, i) => (
               <Image
@@ -188,21 +145,31 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
                 src={c.cover}
                 alt={c.client}
                 fill
-                className={`object-cover transition-all duration-700 group-hover:scale-[1.03] ${
-                  i === active ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                className={`object-cover transition-[opacity,transform] duration-[850ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035] ${
+                  i === active ? "opacity-100 scale-100" : "opacity-0 scale-[1.05]"
                 }`}
-                sizes="50vw"
+                sizes="60vw"
                 priority={i === 0}
               />
             ))}
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-xl border border-cream/15 bg-void/70 p-4 backdrop-blur-md">
-              <div>
-                <p className="text-[0.62rem] uppercase tracking-[0.2em] text-amber-light">Featured Work</p>
-                <p className="font-serif text-lg text-cream">{current.client}</p>
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-55"
+            />
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-8 xl:p-10">
+              <div className="max-w-lg">
+                <p className="text-[0.62rem] uppercase tracking-[0.22em] text-amber-light">
+                  {current.sector}
+                  {current.year ? ` · ${current.year}` : ""}
+                </p>
+                <p className="mt-2 font-serif text-[clamp(1.8rem,2.6vw,2.6rem)] leading-[1.05] tracking-tight text-cream">
+                  {current.client}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-cream/65">{current.summary}</p>
               </div>
-              <span className="btn-ghost py-2 px-4 text-[0.6rem]">
-                Explore Case →
+              <span className="btn-primary shrink-0 py-3 px-5 text-[0.62rem]">
+                Open story
+                <span className="ml-2">→</span>
               </span>
             </div>
           </Link>

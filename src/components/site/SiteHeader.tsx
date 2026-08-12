@@ -67,7 +67,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/connect"
-            className="hidden rounded-full bg-cream px-5 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-void transition hover:bg-cream-dim sm:inline-flex"
+            className="hidden rounded-[var(--radius-square)] bg-cream px-5 py-2.5 text-[0.68rem] uppercase tracking-[0.18em] text-void transition hover:bg-cream-dim sm:inline-flex"
           >
             Let&apos;s talk
           </Link>

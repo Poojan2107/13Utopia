@@ -12,6 +12,7 @@
   --font-body: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
   --radius-soft: 1.25rem;
+  --radius-square: 0.35rem;
   --radius-pill: 9999px;
 }
 
@@ -49,7 +50,7 @@
   :focus-visible {
     outline: 2px solid var(--color-amber-light);
     outline-offset: 3px;
-    border-radius: 999px;
+    border-radius: var(--radius-square);
   }
 
   ::placeholder {
@@ -121,9 +122,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 999px;
+    border-radius: var(--radius-square);
     background: var(--color-cream);
-    padding: 0.95rem 1.7rem;
+    padding: 1rem 1.65rem;
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.2em;
@@ -140,9 +141,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 999px;
+    border-radius: var(--radius-square);
     border: 1px solid color-mix(in srgb, var(--color-cream) 30%, transparent);
-    padding: 0.95rem 1.7rem;
+    padding: 1rem 1.65rem;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -159,9 +160,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 999px;
+    border-radius: var(--radius-square);
     background: var(--color-void);
-    padding: 0.95rem 1.7rem;
+    padding: 1rem 1.65rem;
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.2em;
@@ -178,9 +179,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 999px;
+    border-radius: var(--radius-square);
     border: 1px solid color-mix(in srgb, var(--color-void) 22%, transparent);
-    padding: 0.95rem 1.7rem;
+    padding: 1rem 1.65rem;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -462,6 +463,10 @@
   .studio-cursor.is-hot .studio-cursor-ring {
     transform: scale(1.85);
   }
+
+  .quote-swap {
+    animation: quote-in 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 @keyframes reveal-up {
@@ -550,6 +555,17 @@
   }
 }
 
+@keyframes quote-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes scroll-cue {
   0%,
   100% {
@@ -571,6 +587,7 @@
   .marquee-track,
   .scroll-cue,
   .text-gold-shift,
+  .quote-swap,
   .mask-blob,
   .mask-blob-2,
   .mask-blob-3,

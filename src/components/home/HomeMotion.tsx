@@ -14,11 +14,11 @@ export function HomeMotion({ children }: { children: ReactNode }) {
 
       gsap.utils.toArray<HTMLElement>("[data-fade]").forEach((el) => {
         gsap.from(el, {
-          y: 40,
+          y: 36,
           autoAlpha: 0,
-          duration: 1.15,
+          duration: 1.05,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 84%" },
+          scrollTrigger: { trigger: el, start: "top 88%" },
         });
       });
 
@@ -26,12 +26,12 @@ export function HomeMotion({ children }: { children: ReactNode }) {
         const items = wrap.querySelectorAll("[data-stagger-item]");
         if (!items.length) return;
         gsap.from(items, {
-          y: 32,
+          y: 28,
           autoAlpha: 0,
-          duration: 0.95,
-          stagger: 0.09,
+          duration: 0.85,
+          stagger: 0.07,
           ease: "power3.out",
-          scrollTrigger: { trigger: wrap, start: "top 78%" },
+          scrollTrigger: { trigger: wrap, start: "top 82%" },
         });
       });
 
@@ -39,15 +39,16 @@ export function HomeMotion({ children }: { children: ReactNode }) {
       if (scaleEl) {
         gsap.fromTo(
           scaleEl,
-          { y: 24 },
+          { y: 40, scale: 0.97 },
           {
             y: 0,
+            scale: 1,
             ease: "none",
             scrollTrigger: {
               trigger: scaleEl,
-              start: "top 90%",
-              end: "top 55%",
-              scrub: 0.6,
+              start: "top 92%",
+              end: "top 58%",
+              scrub: 0.7,
             },
           },
         );
