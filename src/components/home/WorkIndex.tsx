@@ -102,14 +102,26 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
           className="mt-14 hidden gap-16 lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-center"
         >
           <div>
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-light/30 bg-amber/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-amber-light">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-light" />
-                Case {String(active + 1).padStart(2, "0")} / {String(stories.length).padStart(2, "0")}
-              </span>
-              <span className="text-[0.65rem] uppercase tracking-[0.24em] text-cream/40">
-                {current.sector} {current.year ? `· ${current.year}` : ""}
-              </span>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-light/30 bg-amber/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-amber-light">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-light" />
+                  Case {String(active + 1).padStart(2, "0")} / {String(stories.length).padStart(2, "0")}
+                </span>
+                <span className="text-[0.65rem] uppercase tracking-[0.24em] text-cream/40">
+                  {current.sector} {current.year ? `· ${current.year}` : ""}
+                </span>
+              </div>
+              {current.logo && (
+                <div className="relative h-7 w-28 shrink-0 grayscale opacity-85 hover:grayscale-0 transition-all">
+                  <Image
+                    src={current.logo}
+                    alt={current.client}
+                    fill
+                    className="object-contain object-right"
+                  />
+                </div>
+              )}
             </div>
 
             <h3 className="mt-4 font-serif text-[clamp(2.4rem,4vw,3.6rem)] leading-[1.05] tracking-tight text-cream">

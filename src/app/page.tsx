@@ -13,10 +13,8 @@ import { SectionIntro } from "@/components/home/SectionIntro";
 import { HomeMotion } from "@/components/home/HomeMotion";
 
 export default function HomePage() {
-  const work = caseStories.slice(0, 5);
-  const quote = testimonials[0];
-  const quoteLead = `${quote.quote.split(". ")[0]}.`;
-  const logoLoop = [...clients.slice(0, 12), ...clients.slice(0, 12)];
+  const work = caseStories;
+  const logoLoop = [...clients, ...clients];
 
   return (
     <HomeMotion>
@@ -27,7 +25,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-void to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-void to-transparent z-10" />
         <p className="mb-8 text-center text-[0.65rem] uppercase tracking-[0.34em] text-cream/40">
-          Selected partners & enterprise clients
+          Selected partners & enterprise clients ({clients.length} brands)
         </p>
         <div className="marquee-track items-center gap-16 px-8 opacity-75">
           {logoLoop.map((c, idx) => (
@@ -193,16 +191,36 @@ export default function HomePage() {
       </section>
 
       <section className="px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
-        <figure data-fade className="mx-auto max-w-[1200px]">
-          <p aria-hidden className="font-serif text-6xl leading-none text-amber-light/45 sm:text-7xl">
-            “
-          </p>
-          <blockquote className="mt-2 max-w-4xl font-serif text-[clamp(1.6rem,3.4vw,2.8rem)] leading-[1.2] tracking-tight text-cream">
-            {quoteLead}
-          </blockquote>
-          <figcaption className="mt-8 text-[0.7rem] uppercase tracking-[0.22em] text-cream/40">
-            {quote.name} — {quote.role}, {quote.company}
-          </figcaption>
+        <div data-fade className="mx-auto max-w-[1200px]">
+          <div className="flex items-center gap-3">
+            <div className="relative h-4 w-20 grayscale opacity-90">
+              <Image
+                src="/legacy/reviews/rating.png"
+                alt="5 Stars Rating"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+            <span className="text-[0.65rem] uppercase tracking-[0.24em] text-amber-light">Client Trust</span>
+          </div>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure key={t.id} className="surface-rich rounded-2xl border border-cream/10 p-6 flex flex-col justify-between">
+                <div>
+                  <p aria-hidden className="font-serif text-4xl leading-none text-amber-light/45">“</p>
+                  <blockquote className="mt-2 text-sm leading-relaxed text-cream/80">
+                    &quot;{t.quote}&quot;
+                  </blockquote>
+                </div>
+                <figcaption className="mt-6 border-t border-cream/10 pt-4">
+                  <p className="font-serif text-base text-cream">{t.name}</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.16em] text-cream/40">{t.role}, {t.company}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
           <dl className="mt-16 grid gap-6 sm:grid-cols-3">
             {site.metrics.map((m) => (
               <div key={m.label} className="surface-rich rounded-2xl border border-cream/10 p-6 shadow-lg">
@@ -212,7 +230,7 @@ export default function HomePage() {
             ))}
           </dl>
           <p className="mt-5 text-[0.65rem] text-cream/35">{site.metricsNote}</p>
-        </figure>
+        </div>
       </section>
 
       <section className="px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
