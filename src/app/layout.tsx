@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Syne } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif, Syne } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { OrganizationJsonLd } from "@/components/site/JsonLd";
 import { AmbientLight } from "@/components/site/AmbientLight";
+import { StudioCursor } from "@/components/site/StudioCursor";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -19,6 +20,14 @@ const syne = Syne({
 const instrument = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -39,7 +48,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: site.name, url: site.url }],
   openGraph: {
-    title: `${site.name} — Growth, craft, and systems`,
+    title: `${site.name} — ${site.headline}`,
     description: site.description,
     url: site.url,
     siteName: site.name,
@@ -63,12 +72,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${syne.variable} ${instrument.variable} ${instrumentSerif.variable}`}>
       <body className="min-h-dvh flex flex-col">
         <OrganizationJsonLd />
         <AmbientLight />
+        <StudioCursor />
         <SiteHeader />
-        <main className="relative z-[2] flex-1 pt-16 lg:pt-20">{children}</main>
+        <main className="relative z-[2] flex-1 pt-20 lg:pt-24">{children}</main>
         <SiteFooter />
         <WhatsAppFab />
         <Analytics />

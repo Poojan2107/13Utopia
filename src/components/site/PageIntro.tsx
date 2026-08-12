@@ -16,11 +16,11 @@ export function PageIntro({
       <div className="space-y-5">
         <div className="flex items-baseline gap-4">
           {index && (
-            <span className="font-display text-sm tabular-nums text-amber-light/70">{index}</span>
+            <span className="font-serif text-sm tabular-nums text-amber-light/70">{index}</span>
           )}
           <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">{eyebrow}</p>
         </div>
-        <h1 className="font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.95] tracking-tight text-cream text-balance">
+        <h1 className="font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.95] tracking-tight text-cream text-balance">
           {title}
         </h1>
       </div>
@@ -31,36 +31,21 @@ export function PageIntro({
   );
 }
 
-export function CtaBand({ title = "Ready to go deeper?" }: { title?: string }) {
+export function CtaBand({ title = "Ready when you are." }: { title?: string }) {
   return (
-    <div className="relative mt-24 overflow-hidden border-y border-cream/10 py-20 sm:mt-32 sm:py-28">
-      <div aria-hidden className="pointer-events-none absolute -left-10 top-1/2 font-display text-[clamp(6rem,22vw,14rem)] leading-none text-cream/[0.03] -translate-y-1/2 select-none">
-        13
-      </div>
-      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <h2 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.95] tracking-tight text-cream text-balance">
-            {title}
-          </h2>
-          <div className="lg:text-right">
-            <p className="text-sm leading-relaxed text-cream/45">
-              Tell us the outcome. We&apos;ll map the path — growth, craft, systems.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3 lg:justify-end">
-              <Link
-                href="/connect"
-                className="inline-flex border border-cream bg-cream px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-void transition hover:bg-cream-dim"
-              >
-                Start a project
-              </Link>
-              <Link
-                href="/capabilities"
-                className="inline-flex border border-cream/25 px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-cream/80 transition hover:border-amber-light hover:text-amber-light"
-              >
-                Capabilities
-              </Link>
-            </div>
-          </div>
+    <div className="mx-auto mt-24 max-w-[1200px] px-5 sm:mt-32 sm:px-8 lg:px-10">
+      <div className="panel-cream px-8 py-16 sm:px-14 sm:py-20 lg:px-20">
+        <p className="text-[0.65rem] uppercase tracking-[0.34em] text-amber/80">Connect</p>
+        <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.2rem,5vw,4rem)] leading-[0.96] tracking-tight text-void">
+          {title}
+        </h2>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link href="/connect" className="btn-void">
+            Let&apos;s talk
+          </Link>
+          <Link href="/capabilities" className="btn-ghost-void">
+            Capabilities
+          </Link>
         </div>
       </div>
     </div>

@@ -60,14 +60,11 @@ export default function CareersPage() {
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <a
                 href={`mailto:${site.email}?subject=${encodeURIComponent("Careers — application")}`}
-                className="inline-flex border border-cream bg-cream px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-void transition hover:bg-cream-dim"
+                className="btn-primary"
               >
                 Email us
               </a>
-              <Link
-                href="/collective"
-                className="inline-flex border border-cream/25 px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-cream/80 transition hover:border-amber-light hover:text-amber-light"
-              >
+              <Link href="/collective" className="btn-ghost">
                 See the collective
               </Link>
             </div>

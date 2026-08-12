@@ -1,8 +1,8 @@
 export const site = {
   name: "13UTOPiA",
   legalName: "13UTOPiA",
-  tagline: "Empowering businesses to thrive in the digital landscape.",
-  headline: "Growth, craft, and systems for brands ready to scale.",
+  tagline: "Be Unreal Be Unreasonable",
+  headline: "Be Unreal Be Unreasonable",
   description:
     "13UTOPiA is a growth and technology agency in Ahmedabad offering SEO, branding, web and app development, AI automation, cloud engineering, and strategy — Shyamal HQ.",
   url: "https://13utopia.com",

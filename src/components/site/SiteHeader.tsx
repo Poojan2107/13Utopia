@@ -23,12 +23,14 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-void/90 backdrop-blur-xl" : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8 lg:h-20 lg:px-10">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+      <div
+        className={`mx-auto flex h-14 max-w-[1360px] items-center justify-between gap-4 rounded-full px-4 transition-all duration-500 sm:h-16 sm:px-6 ${
+          scrolled
+            ? "border border-cream/12 bg-void/80 shadow-[0_16px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
+            : "border border-transparent bg-transparent"
+        }`}
+      >
         <Link href="/" className="relative block h-7 w-[6.75rem] shrink-0 sm:h-8 sm:w-[7.5rem]" aria-label={`${site.name} home`}>
           <Image
             src="/brand/13utopia-lockup-flat.png"
@@ -40,7 +42,7 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 text-[0.7rem] uppercase tracking-[0.22em] lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-4 text-[0.62rem] uppercase tracking-[0.16em] lg:flex xl:gap-5 xl:text-[0.65rem] xl:tracking-[0.18em]" aria-label="Primary">
           {nav
             .filter((i) => i.href !== "/" && i.href !== "/connect")
             .map((item) => {
@@ -65,9 +67,9 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/connect"
-            className="hidden rounded-none border border-cream/30 px-4 py-2 text-[0.7rem] uppercase tracking-[0.2em] text-cream transition hover:border-amber-light hover:bg-cream hover:text-void sm:inline-flex"
+            className="hidden rounded-full bg-cream px-5 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-void transition hover:bg-cream-dim sm:inline-flex"
           >
-            Start a project
+            Let&apos;s talk
           </Link>
           <button
             type="button"
@@ -82,7 +84,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" className="border-t border-cream/10 bg-void px-5 py-8 lg:hidden" aria-label="Mobile">
+        <nav id="mobile-nav" className="mt-2 rounded-[2rem] border border-cream/10 bg-void/95 px-5 py-8 lg:hidden" aria-label="Mobile">
           <ul className="flex flex-col gap-5 text-2xl font-display tracking-tight">
             {nav.map((item) => (
               <li key={item.href}>

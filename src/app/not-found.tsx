@@ -13,16 +13,10 @@ export default function NotFound() {
         That URL doesn&apos;t exist — or it moved. Head home or start a project conversation.
       </p>
       <div className="mt-4 flex flex-wrap gap-3">
-        <Link
-          href="/"
-          className="inline-flex border border-cream bg-cream px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-void transition hover:bg-cream-dim"
-        >
+        <Link href="/" className="btn-primary">
           Home
         </Link>
-        <Link
-          href="/connect"
-          className="inline-flex border border-cream/25 px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-cream/80 transition hover:border-amber-light hover:text-amber-light"
-        >
+        <Link href="/connect" className="btn-ghost">
           Connect
         </Link>
       </div>

@@ -134,7 +134,7 @@ export default async function CaseStoryPage({ params }: Props) {
               <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Related solution</h2>
               <Link
                 href={c.solutionHref}
-                className="mt-5 inline-flex border border-cream/25 px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-cream/80 transition hover:border-amber-light hover:text-amber-light"
+                className="btn-ghost mt-5"
               >
                 View path →
               </Link>

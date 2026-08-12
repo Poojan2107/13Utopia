@@ -22,7 +22,7 @@ Greek gods / mythology: **scrapped.**
 - WhatsApp: `https://wa.me/919924131397`
 - **India office (only):** 1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015
 - Metrics (temporary): **200+** projects · **99%** success rate · **18+** countries
-- Hero (mutable): *Growth, craft, and systems for brands ready to scale.*
+- Hero / main tagline: *Be Unreal Be Unreasonable*
 - Source of truth in code: `src/data/site.ts`
 
 Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`

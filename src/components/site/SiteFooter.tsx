@@ -11,7 +11,8 @@ const social = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden border-t hairline bg-void-soft">
+    <footer className="relative overflow-hidden bg-void-soft">
+      <div aria-hidden className="pointer-events-none absolute -top-24 right-[10%] h-64 w-64 rounded-full bg-amber-light/10 blur-3xl" />
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 opacity-[0.07]"
@@ -29,11 +30,17 @@ export function SiteFooter() {
               sizes="120px"
             />
           </Link>
-          <p className="max-w-sm text-sm leading-relaxed text-cream/60">{site.tagline}</p>
-          <p className="text-sm text-cream/40">Digital moves that matter.</p>
+          <p className="max-w-sm font-serif text-lg italic leading-relaxed text-cream/70">{site.tagline}</p>
+          <p className="text-sm text-cream/40">Growth, craft, and systems — Ahmedabad studio.</p>
         </div>
         <div className="space-y-3 text-sm">
           <p className="text-xs uppercase tracking-[0.2em] text-amber-light/80">Explore</p>
+          <Link href="/capabilities" className="block text-cream/75 transition hover:text-cream">
+            Capabilities
+          </Link>
+          <Link href="/solutions" className="block text-cream/75 transition hover:text-cream">
+            Solutions
+          </Link>
           <Link href="/case-stories" className="block text-cream/75 transition hover:text-cream">
             Case Stories
           </Link>

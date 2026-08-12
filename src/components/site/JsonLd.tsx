@@ -5,6 +5,7 @@ export function OrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: site.name,
+    slogan: site.headline,
     description: site.description,
     url: site.url,
     email: site.email,
