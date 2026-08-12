@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 import { processSteps } from "@/data/site";
-import { SectionIntro } from "@/components/home/SectionIntro";
 import { gsap, ScrollTrigger, registerGsap, useGSAP } from "@/lib/gsap";
 
 registerGsap();
@@ -22,8 +21,8 @@ export function ProcessRail() {
       mm.add("(min-width: 768px)", () => {
         ScrollTrigger.create({
           trigger: root.current,
-          start: "top 50%",
-          end: "bottom 55%",
+          start: "top 52%",
+          end: "bottom 50%",
           scrub: true,
           onUpdate: (self) => {
             const i = Math.min(
@@ -41,43 +40,40 @@ export function ProcessRail() {
   );
 
   return (
-    <section ref={root} className="px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
+    <section ref={root} className="border-t border-cream/10 px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
       <div className="mx-auto max-w-[1400px]">
         <div data-fade>
-          <SectionIntro index="05 — Process" title="How we" italic="work" />
+          <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">05 — Process</p>
+          <h2 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.94] tracking-tight text-cream">
+            How we <span className="italic text-amber-light">work</span>
+          </h2>
         </div>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-20">
-          <div data-fade className="lg:sticky lg:top-32">
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <div data-fade className="lg:sticky lg:top-32 lg:self-start">
             <p className="font-mono text-xs tracking-[0.22em] text-amber-light">
               {current.n} · {durations[active]}
             </p>
-            <h3 className="mt-5 font-serif text-[clamp(2.8rem,6vw,5rem)] leading-[0.94] tracking-tight text-cream">
+            <h3 className="mt-5 font-serif text-[clamp(2.6rem,5.5vw,4.8rem)] leading-[0.94] tracking-tight text-cream">
               {current.title}
             </h3>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/52">{current.blurb}</p>
-            <div className="mt-10 h-px w-full max-w-xs bg-cream/10" aria-hidden>
-              <div
-                className="h-px bg-amber-light transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                style={{ width: `${((active + 1) / processSteps.length) * 100}%` }}
-              />
-            </div>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-cream/50">{current.blurb}</p>
           </div>
 
-          <ol className="border-t border-cream/10">
+          <ol className="divide-y divide-cream/10 border-y border-cream/10">
             {processSteps.map((s, i) => (
-              <li key={s.n} className="border-b border-cream/10">
+              <li key={s.n}>
                 <button
                   type="button"
                   onClick={() => setActive(i)}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  className={`flex w-full items-center justify-between gap-4 py-6 text-left transition-colors duration-300 ${
+                  className={`flex w-full items-center justify-between gap-4 py-5 text-left transition-colors duration-300 ${
                     i === active ? "text-cream" : "text-cream/32 hover:text-cream/65"
                   }`}
                   aria-current={i === active ? "step" : undefined}
                 >
-                  <div className="flex items-baseline gap-5">
+                  <div className="flex items-baseline gap-4">
                     <span
                       className={`font-mono text-xs tabular-nums ${
                         i === active ? "text-amber-light" : "text-cream/22"
@@ -87,7 +83,7 @@ export function ProcessRail() {
                     </span>
                     <span
                       className={`font-serif tracking-tight transition-all duration-300 ${
-                        i === active ? "text-[1.85rem] text-amber-light sm:text-[2.15rem]" : "text-xl sm:text-2xl"
+                        i === active ? "text-2xl text-amber-light" : "text-xl"
                       }`}
                     >
                       {s.title}

@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import type { CaseStory } from "@/data/case-stories";
-import { SectionIntro } from "@/components/home/SectionIntro";
+import { WorkStageMedia } from "@/components/home/WorkStageMedia";
 import { gsap, ScrollTrigger, registerGsap, useGSAP } from "@/lib/gsap";
 
 registerGsap();
@@ -22,10 +21,10 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
       mm.add("(min-width: 1024px)", () => {
         ScrollTrigger.create({
           trigger: pin.current,
-          start: "top 5.5rem",
-          end: `+=${Math.max(stories.length, 3) * 62}vh`,
+          start: "top top",
+          end: `+=${Math.max(stories.length, 3) * 55}vh`,
           pin: true,
-          scrub: 0.7,
+          scrub: 0.75,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
@@ -47,61 +46,52 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
   if (!current) return null;
 
   return (
-    <section ref={root} id="work" className="relative scroll-mt-28 py-24 sm:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10">
-        <div data-fade>
-          <SectionIntro
-            index="01 — Work"
-            title="Proof over"
-            italic="promises."
-            action={{ href: "/case-stories", label: "All stories →" }}
-          />
+    <section ref={root} id="work" className="relative scroll-mt-28">
+      <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-32 lg:px-10">
+        <div data-fade className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">01 — Work</p>
+            <h2 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.94] tracking-tight text-cream">
+              Proof over <span className="italic text-amber-light">promises.</span>
+            </h2>
+          </div>
+          <Link
+            href="/case-stories"
+            className="inline-flex w-fit rounded-[var(--radius-square)] border border-cream/20 px-5 py-2.5 text-[0.7rem] uppercase tracking-[0.2em] text-cream/50 transition hover:border-amber-light hover:text-amber-light"
+          >
+            All stories →
+          </Link>
         </div>
+      </div>
 
-        <ul className="work-rail mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:hidden">
-          {stories.map((c, i) => (
-            <li key={c.slug} className="w-[82vw] max-w-[360px] shrink-0 snap-center">
-              <Link href={`/case-stories/${c.slug}`} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-soft)] border border-cream/10 bg-void-soft">
-                  <Image
-                    src={c.cover}
-                    alt=""
-                    fill
-                    className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                    sizes="82vw"
-                  />
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 space-y-1.5 p-6">
-                    <p className="text-[0.62rem] uppercase tracking-[0.2em] text-amber-light">
-                      {String(i + 1).padStart(2, "0")} · {c.sector}
-                    </p>
-                    <h3 className="font-serif text-2xl text-cream transition-colors group-hover:text-amber-light">
-                      {c.client}
-                    </h3>
-                  </div>
+      <ul className="work-rail mx-auto flex max-w-[1400px] snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 sm:px-8 lg:hidden">
+        {stories.map((c, i) => (
+          <li key={c.slug} className="w-[88vw] max-w-[400px] shrink-0 snap-center">
+            <Link href={`/case-stories/${c.slug}`} className="group block">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-soft)] bg-void-soft">
+                <WorkStageMedia story={c} active priority={i === 0} />
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+                  <p className="text-[0.62rem] uppercase tracking-[0.2em] text-amber-light">
+                    {String(i + 1).padStart(2, "0")} · {c.sector}
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl text-cream group-hover:text-amber-light">{c.client}</h3>
                 </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-        <div
-          ref={pin}
-          className="relative mt-16 hidden min-h-[calc(100vh-7.5rem)] lg:grid lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1.62fr)] lg:items-stretch lg:gap-10"
-        >
-          <div className="relative flex flex-col justify-between py-1">
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -left-4 top-0 font-serif text-[clamp(7rem,14vw,12rem)] leading-none tracking-[-0.08em] text-cream/[0.06] tabular-nums"
-            >
-              {String(active + 1).padStart(2, "0")}
-            </span>
+      <div ref={pin} className="relative hidden h-dvh w-full lg:block">
+        {stories.map((c, i) => (
+          <WorkStageMedia key={c.slug} story={c} active={i === active} priority={i === 0} />
+        ))}
 
-            <p className="relative text-[0.62rem] uppercase tracking-[0.28em] text-amber-light">
-              {String(active + 1).padStart(2, "0")} / {String(stories.length).padStart(2, "0")}
-            </p>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-void via-void/40 to-transparent" />
 
-            <ul className="relative mt-auto">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-10 pb-16 pt-28">
+          <div className="grid h-full grid-cols-[minmax(0,0.34fr)_minmax(0,1fr)] items-end gap-12">
+            <ul className="space-y-0 self-end pb-2">
               {stories.map((c, i) => (
                 <li key={c.slug} className="border-t border-cream/10 last:border-b">
                   <button
@@ -109,70 +99,49 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
                     onMouseEnter={() => setActive(i)}
                     onFocus={() => setActive(i)}
                     onClick={() => setActive(i)}
-                    className={`flex w-full items-baseline justify-between gap-3 py-3.5 text-left transition-colors duration-300 ${
-                      i === active ? "text-cream" : "text-cream/28 hover:text-cream/60"
+                    className={`flex w-full items-baseline gap-3 py-3.5 text-left transition-colors duration-300 ${
+                      i === active ? "text-cream" : "text-cream/30 hover:text-cream/65"
                     }`}
                   >
-                    <span className="flex min-w-0 items-baseline gap-3">
-                      <span
-                        className={`font-mono text-[0.65rem] tabular-nums ${
-                          i === active ? "text-amber-light" : "text-cream/20"
-                        }`}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={`truncate font-serif tracking-tight transition-all duration-300 ${
-                          i === active ? "text-[1.35rem] text-amber-light" : "text-lg"
-                        }`}
-                      >
-                        {c.client}
-                      </span>
+                    <span
+                      className={`font-mono text-[0.65rem] tabular-nums ${
+                        i === active ? "text-amber-light" : "text-cream/22"
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`truncate font-serif tracking-tight transition-all duration-300 ${
+                        i === active ? "text-xl text-amber-light" : "text-base"
+                      }`}
+                    >
+                      {c.client}
                     </span>
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
 
-          <Link
-            href={`/case-stories/${current.slug}`}
-            className="group relative block min-h-[calc(100vh-8.5rem)] overflow-hidden rounded-[var(--radius-soft)]"
-          >
-            {stories.map((c, i) => (
-              <Image
-                key={c.slug}
-                src={c.cover}
-                alt={c.client}
-                fill
-                className={`object-cover transition-[opacity,transform] duration-[850ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035] ${
-                  i === active ? "opacity-100 scale-100" : "opacity-0 scale-[1.05]"
-                }`}
-                sizes="60vw"
-                priority={i === 0}
-              />
-            ))}
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-55"
-            />
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-8 xl:p-10">
-              <div className="max-w-lg">
-                <p className="text-[0.62rem] uppercase tracking-[0.22em] text-amber-light">
-                  {current.sector}
-                  {current.year ? ` · ${current.year}` : ""}
-                </p>
-                <p className="mt-2 font-serif text-[clamp(1.8rem,2.6vw,2.6rem)] leading-[1.05] tracking-tight text-cream">
-                  {current.client}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-cream/65">{current.summary}</p>
-              </div>
-              <span className="btn-primary shrink-0 py-3 px-5 text-[0.62rem]">
-                Open story
-                <span className="ml-2">→</span>
-              </span>
+            <div className="flex flex-col items-start justify-end pb-2">
+              <p className="font-serif text-[clamp(5rem,11vw,9rem)] leading-none tracking-[-0.06em] text-cream/[0.07] tabular-nums">
+                {String(active + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-2 text-[0.62rem] uppercase tracking-[0.24em] text-amber-light">
+                {current.sector}
+                {current.year ? ` · ${current.year}` : ""}
+              </p>
+              <h3 className="mt-3 max-w-2xl font-serif text-[clamp(2.4rem,4.5vw,4.5rem)] leading-[0.98] tracking-tight text-cream">
+                {current.client}
+              </h3>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-cream/60">{current.summary}</p>
+              <Link href={`/case-stories/${current.slug}`} className="btn-primary group mt-8">
+                <span>Open story</span>
+                <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </section>
