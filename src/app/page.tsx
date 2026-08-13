@@ -33,36 +33,19 @@ export default function HomePage() {
                 unreasonable.
               </p>
               <div className="mt-8 lg:flex lg:justify-end">
-                <MagneticLink href="/perspective" className="btn-primary group">
-                  <span>Read perspective</span>
-                  <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </MagneticLink>
+                <Link
+                  href="/perspective"
+                  className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/45 transition hover:text-amber-light"
+                >
+                  Read perspective →
+                </Link>
               </div>
             </div>
-          </div>
-
-          <div className="mt-16 flex flex-wrap gap-x-10 gap-y-4 border-t border-cream/10 pt-8 text-[0.62rem] uppercase tracking-[0.18em] text-cream/38">
-            <span>Strategy & Narrative</span>
-            <span className="text-cream/15">·</span>
-            <span>Craft & Interface</span>
-            <span className="text-cream/15">·</span>
-            <span>Engineering & Scale</span>
           </div>
         </div>
       </section>
 
       <WorkIndex stories={work} />
-
-      <section className="border-y border-cream/8 py-8" aria-label="Sectors">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 text-[0.62rem] uppercase tracking-[0.22em] text-cream/38 sm:px-8 lg:px-10">
-          <span className="text-cream/22">Work across</span>
-          {[...new Set(caseStories.map((c) => c.sector))].map((sector) => (
-            <span key={sector}>{sector}</span>
-          ))}
-        </div>
-      </section>
 
       <CapabilitiesIndex />
 

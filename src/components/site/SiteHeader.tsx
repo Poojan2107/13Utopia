@@ -23,12 +23,10 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+    <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`mx-auto flex h-14 max-w-[1360px] items-center justify-between gap-4 rounded-full px-4 transition-all duration-500 sm:h-16 sm:px-6 ${
-          scrolled
-            ? "border border-cream/12 bg-void/80 shadow-[0_16px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
-            : "border border-transparent bg-transparent"
+        className={`mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-4 px-5 transition-colors duration-500 sm:h-[4.25rem] sm:px-8 lg:px-10 ${
+          scrolled ? "border-b border-cream/10 bg-void/88 backdrop-blur-xl" : ""
         }`}
       >
         <Link href="/" className="relative block h-7 w-[6.75rem] shrink-0 sm:h-8 sm:w-[7.5rem]" aria-label={`${site.name} home`}>
@@ -42,7 +40,7 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-4 text-[0.62rem] uppercase tracking-[0.16em] lg:flex xl:gap-5 xl:text-[0.65rem] xl:tracking-[0.18em]" aria-label="Primary">
+        <nav className="hidden items-center gap-5 text-[0.62rem] uppercase tracking-[0.18em] lg:flex xl:gap-7" aria-label="Primary">
           {nav
             .filter((i) => i.href !== "/" && i.href !== "/connect")
             .map((item) => {
@@ -52,7 +50,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={`relative py-1 transition-colors ${
-                    active ? "text-cream" : "text-cream/45 hover:text-cream"
+                    active ? "text-cream" : "text-cream/40 hover:text-cream"
                   }`}
                 >
                   {item.label}
@@ -84,8 +82,8 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" className="mt-2 rounded-[2rem] border border-cream/10 bg-void/95 px-5 py-8 lg:hidden" aria-label="Mobile">
-          <ul className="flex flex-col gap-5 text-2xl font-display tracking-tight">
+        <nav id="mobile-nav" className="border-b border-cream/10 bg-void px-5 py-8 lg:hidden" aria-label="Mobile">
+          <ul className="flex flex-col gap-5 text-2xl font-serif tracking-tight">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-cream/80 hover:text-cream" onClick={() => setOpen(false)}>

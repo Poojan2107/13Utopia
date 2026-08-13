@@ -11,15 +11,15 @@ const social = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-void-soft">
-      <div aria-hidden className="pointer-events-none absolute -top-24 right-[10%] h-64 w-64 rounded-full bg-amber-light/10 blur-3xl" />
-      <div
+    <footer className="relative overflow-hidden border-t border-cream/10 bg-void">
+      <p
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 opacity-[0.07]"
+        className="pointer-events-none select-none px-5 pt-10 font-serif text-[clamp(4.5rem,16vw,14rem)] leading-[0.8] tracking-[-0.07em] text-cream/[0.055] sm:px-8 lg:px-10"
       >
-        <Image src="/brand/13-monogram-ghost.png" alt="" fill className="object-contain" sizes="256px" />
-      </div>
-      <div className="relative mx-auto grid max-w-[1400px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
+        13UTOPiA
+      </p>
+
+      <div className="relative mx-auto grid max-w-[1400px] gap-10 px-5 pb-14 pt-6 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
         <div className="space-y-4">
           <Link href="/" className="relative block h-8 w-[7.5rem]" aria-label={site.name}>
             <Image
@@ -30,8 +30,8 @@ export function SiteFooter() {
               sizes="120px"
             />
           </Link>
-          <p className="max-w-sm font-serif text-lg italic leading-relaxed text-cream/70">{site.tagline}</p>
-          <p className="text-sm text-cream/40">Growth, craft, and systems — Ahmedabad studio.</p>
+          <p className="max-w-sm font-serif text-xl italic leading-relaxed text-cream/70">{site.tagline}</p>
+          <p className="text-sm text-cream/40">Ahmedabad studio — growth, craft, and systems.</p>
         </div>
         <div className="space-y-3 text-sm">
           <p className="text-xs uppercase tracking-[0.2em] text-amber-light/80">Explore</p>
@@ -46,12 +46,6 @@ export function SiteFooter() {
           </Link>
           <Link href="/perspective" className="block text-cream/75 transition hover:text-cream">
             Perspective
-          </Link>
-          <Link href="/collective" className="block text-cream/75 transition hover:text-cream">
-            Collective
-          </Link>
-          <Link href="/careers" className="block text-cream/75 transition hover:text-cream">
-            Careers
           </Link>
           <Link href="/connect" className="block text-cream/75 transition hover:text-cream">
             Connect
@@ -95,9 +89,6 @@ export function SiteFooter() {
             </Link>
             <Link href="/legal/refund" className="transition hover:text-cream/70">
               Refunds
-            </Link>
-            <Link href="/connect" className="transition hover:text-cream/70">
-              Start a project
             </Link>
           </div>
         </div>
