@@ -1,110 +1,82 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap, registerGsap } from "@/lib/gsap";
 
 registerGsap();
 
-const worlds = ["CREATE", "BUILD", "GROW"];
-
 export function HeroStage() {
   const root = useRef<HTMLElement>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const element = root.current;
-    if (!element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!element) return;
 
-    const ctx = gsap.context(() => {
-      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-      timeline
-        .from("[data-hero-image]", { scale: 1.12, autoAlpha: 0, duration: 1.4 }, 0)
-        .from("[data-hero-grid]", { autoAlpha: 0, duration: 1.1 }, 0.15)
-        .from("[data-hero-kicker]", { y: 16, autoAlpha: 0, duration: 0.7 }, 0.28)
-        .from("[data-hero-line]", { yPercent: 110, duration: 0.9, stagger: 0.1 }, 0.32)
-        .from("[data-hero-copy]", { y: 14, autoAlpha: 0, duration: 0.65 }, 0.7)
-        .from("[data-hero-world]", { y: 12, autoAlpha: 0, duration: 0.55, stagger: 0.08 }, 0.75)
-        .from("[data-hero-foot]", { autoAlpha: 0, duration: 0.6 }, 0.9);
+    if (reduced) {
+      setLoading(false);
+      return;
+    }
 
-      gsap.to("[data-hero-image]", {
-        yPercent: 4,
-        scale: 1.04,
-        ease: "none",
-        scrollTrigger: {
-          trigger: element,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.8,
-        },
-      });
-    }, element);
+    const loaderTimer = window.setTimeout(() => {
+      const ctx = gsap.context(() => {
+        const timeline = gsap.timeline({
+          onComplete: () => setLoading(false),
+          defaults: { ease: "power4.inOut" },
+        });
 
-    return () => ctx.revert();
+        timeline
+          .to("[data-loader-mark]", { scale: 0.92, autoAlpha: 0, duration: 0.6 })
+          .to("[data-loader]", { clipPath: "inset(0 0 100% 0)", duration: 1.15 }, "-=0.12")
+          .from("[data-hero-orb]", { scale: 0.82, rotate: -16, autoAlpha: 0, duration: 1.45 }, "-=0.55")
+          .from("[data-hero-line]", { scaleX: 0, transformOrigin: "left center", duration: 0.85 }, "-=0.9")
+          .from("[data-hero-word]", { yPercent: 110, rotate: 4, duration: 1.15, stagger: 0.08 }, "-=0.62")
+          .from("[data-hero-meta]", { autoAlpha: 0, y: 12, duration: 0.6 }, "-=0.55");
+      }, element);
+
+      return () => ctx.revert();
+    }, 700);
+
+    return () => window.clearTimeout(loaderTimer);
   }, []);
 
   return (
-    <section ref={root} className="relative -mt-20 min-h-[100svh] overflow-hidden bg-void text-cream">
-      <div className="absolute inset-0 bg-void" aria-hidden="true" />
+    <section ref={root} className="relative -mt-20 min-h-[100svh] overflow-hidden bg-[#090b13] text-[#f6f0e5]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_43%,rgba(209,114,255,0.58),transparent_22%),radial-gradient(circle_at_58%_64%,rgba(63,190,255,0.38),transparent_30%),radial-gradient(circle_at_95%_8%,rgba(255,128,104,0.48),transparent_26%),linear-gradient(120deg,#0a0b15_0%,#10182d_35%,#2a1a50_67%,#12101d_100%)]" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(5,7,14,0.36)_76%,#05060c_100%)]" aria-hidden="true" />
+      <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:clamp(4rem,9vw,9rem)_clamp(4rem,9vw,9rem)] [mask-image:linear-gradient(110deg,black,transparent_78%)]" aria-hidden="true" />
 
-      <div className="absolute inset-0" aria-hidden="true">
-        <Image
-          src="/brand/13utopia-wordmark-3d.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          data-hero-image
-          className="object-cover object-[68%_48%] opacity-[0.9] sm:object-[67%_48%] lg:object-[69%_48%]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0.94)_17%,rgba(0,0,0,0.42)_48%,rgba(0,0,0,0.16)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.82)_0%,transparent_23%,transparent_68%,rgba(0,0,0,0.86)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_47%,transparent_12%,rgba(0,0,0,0.3)_72%,#000_100%)]" />
+      <div data-hero-orb className="pointer-events-none absolute left-[47%] top-[28%] h-[min(60vw,48rem)] w-[min(60vw,48rem)] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_38%_32%,rgba(255,255,255,0.82),rgba(255,181,240,0.45)_12%,rgba(178,92,255,0.25)_36%,rgba(40,70,180,0.12)_58%,transparent_70%)] blur-[0.4px] mix-blend-screen" aria-hidden="true" />
+      <div className="pointer-events-none absolute right-[-12vw] top-[11%] h-[28rem] w-[28rem] rounded-full border border-white/20 opacity-50 [transform:rotate(24deg)_scaleX(1.7)]" aria-hidden="true" />
+      <div className="pointer-events-none absolute bottom-[9%] left-[14%] h-28 w-[clamp(12rem,24vw,25rem)] rounded-full border border-cyan-200/25 opacity-70 [transform:rotate(-27deg)_skewX(-24deg)]" aria-hidden="true" />
+
+      <div data-loader className={`fixed inset-0 z-[80] flex items-center justify-center bg-[#080910] ${loading ? "" : "pointer-events-none"}`} aria-hidden={!loading}>
+        <div data-loader-mark className="relative flex items-center gap-4 text-[#f6f0e5]">
+          <span className="font-serif text-[clamp(4rem,11vw,9rem)] leading-none tracking-[-0.1em]">13</span>
+          <span className="h-px w-16 bg-[#f6f0e5]/60 sm:w-28" />
+          <span className="font-sans text-[0.62rem] font-semibold uppercase tracking-[0.38em] text-[#f6f0e5]/75">UTOPiA</span>
+        </div>
       </div>
 
-      <div data-hero-grid className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(245,235,210,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(245,235,210,0.12)_1px,transparent_1px)] [background-size:clamp(3rem,8vw,8rem)_clamp(3rem,8vw,8rem)] [mask-image:linear-gradient(90deg,black,transparent_85%)]" aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col px-5 pb-8 pt-28 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
-        <div className="flex items-start justify-between gap-8 text-[0.57rem] font-semibold uppercase tracking-[0.3em] text-cream/48">
-          <p data-hero-kicker className="flex items-center gap-3">
-            <span className="h-px w-8 bg-amber-light" />
-            Creative technology + growth
-          </p>
-          <p className="hidden sm:block">Ahmedabad · India</p>
-        </div>
-
-        <div className="flex flex-1 items-end pb-10 pt-16 sm:pb-16 lg:pb-20">
-          <div className="grid w-full gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
-            <div className="lg:col-span-7">
-              <p className="mb-5 text-[0.6rem] uppercase tracking-[0.28em] text-cream/44">13 UTOPiA is not another agency.</p>
-              <h1 className="max-w-[9ch] overflow-hidden font-serif text-[clamp(4.7rem,11vw,11rem)] leading-[0.74] tracking-[-0.07em]">
-                <span data-hero-line className="block">Be Unreal.</span>
-                <span data-hero-line className="block italic text-amber-light">Be Unreasonable.</span>
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1800px] flex-col px-5 pb-7 pt-28 sm:px-8 sm:pb-10 lg:px-12">
+        <div className="flex flex-1 items-center">
+          <div className="relative w-full">
+            <div data-hero-line className="absolute left-0 top-[17%] h-px w-[clamp(7rem,25vw,25rem)] bg-[#f6f0e5]/65" aria-hidden="true" />
+            <div className="ml-[7vw] max-w-[93vw] sm:ml-[9vw] lg:ml-[11vw]">
+              <h1 className="max-w-[13ch] overflow-visible font-serif text-[clamp(4.2rem,12.5vw,13.5rem)] font-medium leading-[0.76] tracking-[-0.08em] sm:max-w-[11ch]">
+                <span data-hero-word className="block">Be Unreal.</span>
+                <span data-hero-word className="ml-[12vw] block italic text-[#ffc4ed] sm:ml-[16vw]">Be</span>
+                <span data-hero-word className="ml-[3vw] block text-[#e8d6ff] sm:ml-[6vw]">Unreasonable.</span>
               </h1>
-              <p data-hero-copy className="mt-8 max-w-[31rem] text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.45] text-cream/72">
-                Imagination, technology, and growth working as one system to build what conventional companies cannot.
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 lg:col-start-9">
-              <div className="border-l border-cream/20 pl-5 sm:pl-7">
-                <p className="mb-5 text-[0.58rem] uppercase tracking-[0.28em] text-cream/42">Choose your entry point</p>
-                <div className="flex flex-wrap gap-2">
-                  {worlds.map((world) => (
-                    <Link key={world} href={`/capabilities#${world.toLowerCase()}`} data-hero-world className="rounded-full border border-cream/22 px-4 py-2.5 text-[0.62rem] font-semibold tracking-[0.22em] text-cream/76 transition-colors duration-300 hover:border-amber-light hover:bg-amber-light hover:text-void">
-                      {world}
-                    </Link>
-                  ))}
-                </div>
-                <p className="mt-6 max-w-[25ch] text-sm leading-6 text-cream/48">Create the signal. Build the system. Grow the result.</p>
-              </div>
             </div>
           </div>
         </div>
 
-        <div data-hero-foot className="flex items-end justify-between gap-6 border-t border-cream/16 pt-4 text-[0.56rem] uppercase tracking-[0.25em] text-cream/38">
-          <span>01 — The point of view</span>
-          <Link href="/case-stories" className="transition-colors hover:text-cream">See what changed <span className="ml-2 text-amber-light">↗</span></Link>
+        <div data-hero-meta className="flex items-end justify-between border-t border-white/20 pt-4" aria-hidden="true">
+          <span className="h-1.5 w-1.5 rounded-full bg-fuchsia-200 shadow-[0_0_22px_rgba(255,190,244,0.95)]" />
+          <span className="h-px w-24 bg-white/35 sm:w-40" />
         </div>
       </div>
     </section>
