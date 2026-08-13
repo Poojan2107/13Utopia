@@ -3,6 +3,7 @@ import Link from "next/link";
 import { capabilities } from "@/data/capabilities";
 import { CtaBand } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Capabilities",
@@ -17,6 +18,7 @@ export default function CapabilitiesHubPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div>
             <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Capabilities</p>
+            <p className="mt-3 text-[0.62rem] uppercase tracking-[0.22em] text-cream/30">{site.tagline}</p>
             <h1 className="mt-5 font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-tight text-cream">
               What we
               <br />

@@ -14,6 +14,7 @@ export default function CareersPage() {
     <div>
       <div className="mx-auto max-w-[1400px] px-5 pb-12 pt-14 sm:px-8 lg:px-10 lg:pt-20">
         <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Careers</p>
+        <p className="mt-3 text-[0.62rem] uppercase tracking-[0.22em] text-cream/30">{site.tagline}</p>
         <div className="mt-5 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <h1 className="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-tight text-cream">
             {careers.title}
@@ -41,6 +42,43 @@ export default function CareersPage() {
           </li>
         ))}
       </ul>
+
+      <section className="border-t border-cream/10">
+        <div className="mx-auto grid max-w-[1400px] gap-16 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:px-10 lg:py-24">
+          <div>
+            <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">What we look for</h2>
+            <ul className="mt-6">
+              {careers.lookFor.map((item, i) => (
+                <li
+                  key={item}
+                  className="grid gap-3 border-t border-cream/10 py-5 text-cream/70 sm:grid-cols-[4rem_1fr] sm:items-baseline"
+                >
+                  <span className="font-display text-lg tabular-nums text-cream/20">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">How we hire</h2>
+            <ul className="mt-6">
+              {careers.howWeHire.map((item, i) => (
+                <li
+                  key={item}
+                  className="grid gap-3 border-t border-cream/10 py-5 text-cream/70 sm:grid-cols-[4rem_1fr] sm:items-baseline"
+                >
+                  <span className="font-display text-lg tabular-nums text-cream/20">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <div className="relative mt-4 overflow-hidden border-y border-cream/10 py-20">
         <div

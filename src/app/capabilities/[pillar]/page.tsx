@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { capabilities, getPillar } from "@/data/capabilities";
-import { Crumb, CtaBand, PageIntro } from "@/components/site/PageIntro";
+import { Crumb, CtaBand, PageIntro, RelatedList } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
 import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
+import { isCreativePillar } from "@/lib/tone";
+import { solutionsUsingPillar } from "@/data/relations";
 
 type Props = { params: Promise<{ pillar: string }> };
 
@@ -27,6 +29,7 @@ export default async function PillarPage({ params }: Props) {
   const pillar = getPillar(slug);
   if (!pillar) notFound();
   const index = capabilities.findIndex((p) => p.slug === pillar.slug);
+  const relatedSolutions = solutionsUsingPillar(pillar.slug);
 
   return (
     <div className="relative">
@@ -49,6 +52,11 @@ export default async function PillarPage({ params }: Props) {
           {String(index + 1).padStart(2, "0")} / {String(capabilities.length).padStart(2, "0")}
         </p>
         <PageIntro eyebrow="Pillar" title={pillar.title} deck={pillar.blurb} />
+        <p className="-mt-8 mb-12 max-w-xl text-sm text-cream/40 lg:-mt-16">
+          {isCreativePillar(pillar.slug)
+            ? "This is a creative pillar — distinctive craft, still 13UTOPiA."
+            : "This is a professional pillar — clarity, systems, and accountable delivery."}
+        </p>
         <ul className="border-y border-cream/10">
           {pillar.services.map((s, i) => (
             <li key={s.slug} className="border-t border-cream/10 first:border-t-0">
@@ -69,6 +77,14 @@ export default async function PillarPage({ params }: Props) {
             </li>
           ))}
         </ul>
+        <RelatedList
+          title="Outcome paths"
+          items={relatedSolutions.map((s) => ({
+            label: s.title,
+            href: `/solutions/${s.slug}`,
+            note: s.intent,
+          }))}
+        />
         <CtaBand title={`Talk about ${pillar.title}`} />
       </div>
     </div>

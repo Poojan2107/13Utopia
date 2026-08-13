@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSolution, solutions } from "@/data/solutions";
-import { Crumb, CtaBand, PageIntro } from "@/components/site/PageIntro";
+import { Crumb, CtaBand, PageIntro, RelatedList } from "@/components/site/PageIntro";
 import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
 import { Reveal } from "@/components/site/Reveal";
+import { casesUsingSolution } from "@/data/relations";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -42,6 +43,9 @@ export default async function SolutionPage({ params }: Props) {
           ]}
         />
         <PageIntro eyebrow={s.intent} title={s.title} deck={s.deck} />
+        <p className="-mt-8 mb-12 max-w-xl text-sm leading-relaxed text-cream/45 lg:-mt-16">
+          {s.whoFor}
+        </p>
 
         <div className="grid gap-16 border-t border-cream/10 pt-14 lg:grid-cols-2 lg:gap-24">
           <Reveal>
@@ -99,6 +103,14 @@ export default async function SolutionPage({ params }: Props) {
           </ul>
         </section>
 
+        <RelatedList
+          title="Related case stories"
+          items={casesUsingSolution(s.slug).map((c) => ({
+            label: c.client,
+            href: `/case-stories/${c.slug}`,
+            note: c.sector,
+          }))}
+        />
         <CtaBand title={`Start a ${s.title} conversation`} />
       </div>
     </div>

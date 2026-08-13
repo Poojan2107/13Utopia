@@ -3,6 +3,7 @@ import Link from "next/link";
 import { solutions } from "@/data/solutions";
 import { CtaBand } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -15,6 +16,7 @@ export default function SolutionsHubPage() {
     <div>
       <div className="mx-auto max-w-[1400px] px-5 pb-12 pt-14 sm:px-8 lg:px-10 lg:pt-20">
         <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Solutions</p>
+        <p className="mt-3 text-[0.62rem] uppercase tracking-[0.22em] text-cream/30">{site.tagline}</p>
         <div className="mt-5 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <h1 className="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-tight text-cream">
             Start with

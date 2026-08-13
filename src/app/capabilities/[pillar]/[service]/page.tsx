@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { capabilities, getService } from "@/data/capabilities";
-import { Crumb, CtaBand, PageIntro } from "@/components/site/PageIntro";
-import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
+import { Crumb, CtaBand, PageIntro, RelatedList } from "@/components/site/PageIntro";
+import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/site/JsonLd";
+import { isCreativePillar } from "@/lib/tone";
+import {
+  casesUsingService,
+  getServiceAudience,
+  pillarFaqs,
+  solutionsUsingService,
+} from "@/data/relations";
 
 type Props = { params: Promise<{ pillar: string; service: string }> };
 
@@ -28,10 +35,15 @@ export default async function ServicePage({ params }: Props) {
   const hit = getService(pillarSlug, serviceSlug);
   if (!hit) notFound();
   const { pillar, service } = hit;
+  const relatedSolutions = solutionsUsingService(pillar.slug, service.slug);
+  const relatedCases = casesUsingService(pillar.slug, service.slug);
+  const siblings = pillar.services.filter((s) => s.slug !== service.slug);
+  const faqs = pillarFaqs[pillar.slug] ?? [];
 
   return (
     <div className="relative">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-64 amber-glow opacity-40" />
+      {faqs.length > 0 && <FaqJsonLd faqs={faqs} />}
       <div className="relative mx-auto max-w-[1400px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <BreadcrumbJsonLd
           items={[
@@ -49,6 +61,11 @@ export default async function ServicePage({ params }: Props) {
           ]}
         />
         <PageIntro eyebrow={pillar.title} title={service.title} deck={service.deck} />
+        <p className="mb-10 max-w-xl text-sm leading-relaxed text-cream/40">
+          {isCreativePillar(pillar.slug)
+            ? "Craft-led: distinctive systems, motion, and identity — still accountable to the brief."
+            : "Practice-led: clear scope, measurable delivery, and a studio that ships without theatre."}
+        </p>
         <div className="grid gap-16 border-t border-cream/10 pt-14 lg:grid-cols-2 lg:gap-24">
           <section>
             <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">What you get</h2>
@@ -69,8 +86,7 @@ export default async function ServicePage({ params }: Props) {
           <section>
             <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Who it&apos;s for</h2>
             <p className="mt-6 font-display text-2xl leading-snug tracking-tight text-cream/80">
-              Teams that need {service.title.toLowerCase()} without juggling three vendors — founders, marketing
-              leads, and product owners who want a clear scope and a studio that ships.
+              {getServiceAudience(pillar.slug, service.slug)}
             </p>
             <p className="mt-8 text-sm text-cream/40">
               Part of{" "}
@@ -85,6 +101,45 @@ export default async function ServicePage({ params }: Props) {
             </p>
           </section>
         </div>
+
+        <RelatedList
+          title="Solutions that use this"
+          items={relatedSolutions.map((s) => ({
+            label: s.title,
+            href: `/solutions/${s.slug}`,
+            note: s.intent,
+          }))}
+        />
+        <RelatedList
+          title="Related case stories"
+          items={relatedCases.map((c) => ({
+            label: c.client,
+            href: `/case-stories/${c.slug}`,
+            note: c.sector,
+          }))}
+        />
+        <RelatedList
+          title={`More in ${pillar.title}`}
+          items={siblings.map((s) => ({
+            label: s.title,
+            href: `/capabilities/${pillar.slug}/${s.slug}`,
+          }))}
+        />
+
+        {faqs.length > 0 && (
+          <section className="mt-16 border-t border-cream/10 pt-14">
+            <h2 className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/80">Questions</h2>
+            <dl className="mt-8 max-w-3xl">
+              {faqs.map((f) => (
+                <div key={f.question} className="border-t border-cream/10 py-6">
+                  <dt className="font-display text-xl text-cream">{f.question}</dt>
+                  <dd className="mt-3 text-sm leading-relaxed text-cream/50">{f.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+
         <CtaBand title={`Start a ${service.title} project`} />
       </div>
     </div>

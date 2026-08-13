@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { StudioPerson } from "@/data/people";
+import { LOCKED_MEDIA } from "@/lib/media";
 
 export function PersonCard({ person }: { person: StudioPerson }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-cream/10 bg-[#0b0b0b] transition hover:border-amber-light/35">
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-void-soft">
-        {person.portrait ? (
+        {LOCKED_MEDIA && person.portrait ? (
           <Image src={person.portrait} alt={person.name} fill className="object-cover" sizes="320px" />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_30%_20%,rgba(196,165,116,0.16),transparent_60%)]">

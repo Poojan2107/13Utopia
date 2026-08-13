@@ -2,8 +2,8 @@
 
 > Synthesized from the inspiration list (2026-08-07).  
 > **Brand kit lock:** three marks in `public/brand/` (see Logo system).  
-> **Status:** brand essence captured; **UI design unlock later** (content guide is the priority now).  
-> Greek gods / statues: **scrapped**.
+> **Status:** Dual-identity UI **locked** (2026-08-13). See `docs/handover/`.  
+> Greek gods / statues: **scrapped**. Canada UI: **deferred**.
 
 ---
 
@@ -102,17 +102,14 @@ Studio POV + proof (Monolog/KOTA/Nothin’) on a stage defined by the wordmark: 
 | Imagery | Work, process, people + brand kit | **Greek gods / statues scrapped** |
 
 ### Hero rules (first viewport)
-- **13 UTOPIA wordmark** as hero-level signal (use the 3D mark or a type treatment that matches it)  
-- One headline, one short support line, one CTA group  
-- One dominant visual plane (full-bleed void + mark / light)  
+- **Left:** *Be Unreal / Be Unreasonable* (editorial type)  
+- **Right:** 3D wordmark as creative object  
+- **Mobile:** mark → tagline → CTAs  
+- One support line + one CTA group  
 - No floating badges / promo chips on the hero  
 
-### Page rhythm
-1. POV / promise  
-2. Proof (work or outcomes)  
-3. Offer map (Capabilities / Solutions)  
-4. Trust (process, collective)  
-5. Connect  
+### Page rhythm (home)
+Hero → Perspective teaser → Work → Capabilities → Solutions → Process → Proof → Connect  
 
 Matches inspirations that convert (Monolog, KOTA, Up Digital) without copying layouts.
 

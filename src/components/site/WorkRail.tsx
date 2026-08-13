@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { caseStories } from "@/data/case-stories";
+import { CasePlaceholder } from "@/components/site/CasePlaceholder";
 
-/** Horizontal scroll work strip — signature motion without GSAP weight */
+/** Horizontal work strip — placeholders until locked media lands. */
 export function WorkRail() {
   const items = caseStories.slice(0, 6);
 
@@ -23,20 +23,10 @@ export function WorkRail() {
           <li key={c.slug} className="w-[min(78vw,420px)] shrink-0 snap-center sm:w-[380px]">
             <Link
               href={`/case-stories/${c.slug}`}
-              className="group relative block overflow-hidden rounded-[1.75rem] border border-cream/10"
+              className="group relative block overflow-hidden rounded-[var(--radius-soft)] border border-cream/10"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src={c.cover}
-                  alt=""
-                  fill
-                  className="case-media object-cover"
-                  sizes="420px"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent"
-                />
+                <CasePlaceholder label={c.client} className="absolute inset-0" />
               </div>
               <div className="absolute inset-x-0 bottom-0 p-5">
                 <p className="text-[0.65rem] uppercase tracking-[0.2em] text-cream/45">{c.sector}</p>

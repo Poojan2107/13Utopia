@@ -1,7 +1,8 @@
 # 13UTOPiA — Project Context
 
 > Read before changing site code.  
-> Last updated: 2026-08-08
+> Last updated: 2026-08-13  
+> **Handover (any IDE):** [docs/handover/README.md](./docs/handover/README.md)
 
 ---
 
@@ -25,7 +26,7 @@ Greek gods / mythology: **scrapped.**
 - Hero / main tagline: *Be Unreal Be Unreasonable*
 - Source of truth in code: `src/data/site.ts`
 
-Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
+Docs: `docs/handover/` · `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 ---
 
@@ -42,7 +43,7 @@ Docs: `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `DESIGN-DIRECTION.md`
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Signature UI (Phase 13):** Asymmetric compositions, stacked work rows, giant indexes, ambient light, square CTAs — less template, more studio. Assets still deferred.
+**Signature UI (Phase 13):** Dual creative/pro identity. Home L/R hero. Interiors complete. Placeholders until real case/client assets.
 
 ---
 

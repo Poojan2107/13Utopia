@@ -5,6 +5,29 @@ import { ConnectForm } from "@/components/site/ConnectForm";
 import { FaqJsonLd } from "@/components/site/JsonLd";
 import { Reveal } from "@/components/site/Reveal";
 
+const intents = [
+  { id: "project", label: "Start a Project", href: "#form", note: "Brief + outcome" },
+  {
+    id: "discovery",
+    label: "Schedule Discovery",
+    href: `mailto:${site.email}?subject=${encodeURIComponent("Discovery call")}`,
+    note: "30-min path",
+  },
+  {
+    id: "partnerships",
+    label: "Partnerships",
+    href: `mailto:${site.email}?subject=${encodeURIComponent("Partnerships")}`,
+    note: "Studio to studio",
+  },
+  {
+    id: "support",
+    label: "Support",
+    href: site.whatsapp,
+    note: "WhatsApp / email",
+    external: true,
+  },
+] as const;
+
 export const metadata: Metadata = {
   title: "Connect",
   description: `Start a project with ${site.name}. Ahmedabad studio — growth, brand, products, AI, and engineering. Email, WhatsApp, or book discovery.`,
@@ -17,6 +40,7 @@ export default function ConnectPage() {
       <div className="mx-auto max-w-[1400px] px-5 pb-12 pt-14 sm:px-8 lg:px-10 lg:pt-20">
         <FaqJsonLd faqs={connectFaqs} />
         <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/85">Connect</p>
+        <p className="mt-3 text-[0.62rem] uppercase tracking-[0.22em] text-cream/30">{site.tagline}</p>
         <div className="mt-5 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <h1 className="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-tight text-cream">
             Let&apos;s talk
@@ -27,6 +51,20 @@ export default function ConnectPage() {
             Share the outcome. We&apos;ll come back with a discovery path — not a generic pitch dump.
           </p>
         </div>
+        <ul className="mt-12 grid gap-px border border-cream/10 bg-cream/10 sm:grid-cols-2 lg:grid-cols-4">
+          {intents.map((item) => (
+            <li key={item.id} className="bg-void">
+              <a
+                href={item.href}
+                {...("external" in item && item.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                className="block px-5 py-6 transition hover:bg-cream/[0.03]"
+              >
+                <p className="font-display text-lg text-cream">{item.label}</p>
+                <p className="mt-2 text-[0.62rem] uppercase tracking-[0.16em] text-cream/35">{item.note}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="border-y border-cream/10">
@@ -62,7 +100,7 @@ export default function ConnectPage() {
               </address>
             </div>
           </aside>
-          <div className="px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+          <div id="form" className="scroll-mt-28 px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
             <ConnectForm />
           </div>
         </div>

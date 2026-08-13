@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStories, getCaseStory } from "@/data/case-stories";
 import { CtaBand } from "@/components/site/PageIntro";
 import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
 import { CaseFrameBento, CaseMediaNote } from "@/components/site/CaseMedia";
+import { CasePlaceholder, ClientMark } from "@/components/site/CasePlaceholder";
+import { showLockedMedia } from "@/lib/media";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -20,7 +21,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${c.client} — Case Story`,
     description: c.summary,
-    openGraph: { images: [{ url: c.cover, alt: c.client }] },
+    openGraph: {
+      images: [
+        {
+          url: showLockedMedia(c.mediaStatus) ? c.cover : "/brand/13utopia-wordmark-3d.png",
+          alt: c.client,
+        },
+      ],
+    },
   };
 }
 
@@ -30,6 +38,7 @@ export default async function CaseStoryPage({ params }: Props) {
   if (!c) notFound();
 
   const others = caseStories.filter((s) => s.slug !== c.slug).slice(0, 3);
+  const index = String(caseStories.findIndex((s) => s.slug === c.slug) + 1).padStart(2, "0");
 
   return (
     <article>
@@ -41,12 +50,9 @@ export default async function CaseStoryPage({ params }: Props) {
         ]}
       />
 
-      <header className="relative min-h-[min(88dvh,860px)] overflow-hidden border-b border-cream/10">
-        <Image src={c.cover} alt="" fill priority className="object-cover object-center" sizes="100vw" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void via-void/55 to-void/20" />
-        <div aria-hidden className="absolute inset-0 stage-grain opacity-40" />
-        <div className="relative z-10 mx-auto flex min-h-[min(88dvh,860px)] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:px-8 lg:px-10 lg:pb-20">
-          <div className="mb-8 flex flex-wrap items-center gap-4">
+      <header className="relative overflow-hidden border-b border-cream/10">
+        <div className="mx-auto grid min-h-[min(82vh,860px)] max-w-[1400px] lg:grid-cols-2">
+          <div className="flex flex-col justify-end px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
             <p className="text-[0.65rem] uppercase tracking-[0.22em] text-cream/45">
               <Link href="/case-stories" className="hover:text-cream">
                 Case Stories
@@ -54,16 +60,28 @@ export default async function CaseStoryPage({ params }: Props) {
               <span className="mx-2 text-cream/25">/</span>
               <span className="text-cream/70">{c.client}</span>
             </p>
-            <CaseMediaNote status={c.mediaStatus} />
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <ClientMark name={c.client} />
+              <CaseMediaNote status={c.mediaStatus} />
+            </div>
+            <p className="mt-8 text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/85">
+              {c.sector}
+              {c.year ? ` · ${c.year}` : ""}
+            </p>
+            <h1 className="mt-4 max-w-[12ch] font-serif text-[clamp(3rem,8vw,6.2rem)] leading-[0.9] tracking-[-0.04em] text-cream">
+              {c.client}
+            </h1>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/55 sm:text-lg">{c.summary}</p>
           </div>
-          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-light/85">
-            {c.sector}
-            {c.year ? ` · ${c.year}` : ""}
-          </p>
-          <h1 className="mt-4 max-w-4xl font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] tracking-tight text-cream">
-            {c.client}
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/60 sm:text-lg">{c.summary}</p>
+          <div className="relative min-h-[48vh] lg:min-h-0">
+            <CasePlaceholder
+              label={c.client}
+              kicker={c.sector}
+              ghost={index}
+              showLabel={false}
+              className="absolute inset-0"
+            />
+          </div>
         </div>
       </header>
 
@@ -110,7 +128,7 @@ export default async function CaseStoryPage({ params }: Props) {
           </ul>
         </section>
 
-        <CaseFrameBento frames={c.frames} />
+        <CaseFrameBento frames={c.frames} mediaStatus={c.mediaStatus} label={c.client} />
 
         <section className="mt-20 grid gap-12 border-t border-cream/10 pt-14 sm:grid-cols-2">
           <div>
@@ -155,12 +173,12 @@ export default async function CaseStoryPage({ params }: Props) {
                 <li key={o.slug} className="bg-void">
                   <Link href={`/case-stories/${o.slug}`} className="group block">
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <Image
-                        src={o.cover}
-                        alt=""
-                        fill
-                        className="case-media object-cover transition duration-700 group-hover:scale-[1.04]"
-                        sizes="(max-width: 640px) 100vw, 33vw"
+                      <CasePlaceholder
+                        label={o.client}
+                        kicker={o.sector}
+                        showLabel={false}
+                        variant="frame"
+                        className="absolute inset-0"
                       />
                     </div>
                     <div className="border-t border-cream/10 px-5 py-5">

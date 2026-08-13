@@ -1,9 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/data/site";
 import { solutions } from "@/data/solutions";
 import { caseStories } from "@/data/case-stories";
-import clients from "@/data/clients.json";
 import { HeroStage } from "@/components/home/HeroStage";
 import { WorkIndex } from "@/components/home/WorkIndex";
 import { CapabilitiesIndex } from "@/components/home/CapabilitiesIndex";
@@ -14,36 +12,16 @@ import { ProofStrip } from "@/components/home/ProofStrip";
 
 export default function HomePage() {
   const work = caseStories.slice(0, 4);
-  const logoLoop = [...clients.slice(0, 12), ...clients.slice(0, 12)];
 
   return (
     <HomeMotion>
       <HeroStage />
-      <WorkIndex stories={work} />
-
-      <section className="relative border-y border-cream/8 py-10" aria-label="Clients">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-void to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-void to-transparent" />
-        <div className="marquee-track items-center gap-14 px-6 opacity-70">
-          {logoLoop.map((c, idx) => (
-            <div key={`${c.slug}-${idx}`} className="flex h-8 w-24 shrink-0 items-center justify-center">
-              <Image
-                src={c.file}
-                alt={c.name}
-                width={96}
-                height={32}
-                className="h-5 w-auto max-w-[6rem] object-contain opacity-40 brightness-0 invert transition-opacity hover:opacity-80"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section className="px-5 py-28 sm:px-8 sm:py-36 lg:px-10">
         <div className="mx-auto max-w-[1400px]">
           <div data-fade className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
             <div className="lg:col-span-8">
-              <p className="text-[0.65rem] uppercase tracking-[0.34em] text-amber-light/80">02 — Perspective</p>
+              <p className="text-[0.65rem] uppercase tracking-[0.34em] text-amber-light/80">01 — Perspective</p>
               <p className="mt-6 max-w-[15ch] font-serif text-[clamp(2.6rem,6.8vw,5.8rem)] leading-[0.92] tracking-[-0.035em] text-cream">
                 Brands deserve execution
                 <span className="italic text-amber-light"> as sharp as their ambition.</span>
@@ -51,7 +29,8 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-4 lg:text-right">
               <p className="text-base leading-relaxed text-cream/50">
-                Strategy, craft, and systems in one studio — so handoff doesn&apos;t kill momentum.
+                Strategy, craft, and systems in one studio — so handoff doesn&apos;t kill momentum. Be unreal. Be
+                unreasonable.
               </p>
               <div className="mt-8 lg:flex lg:justify-end">
                 <MagneticLink href="/perspective" className="btn-primary group">
@@ -71,6 +50,17 @@ export default function HomePage() {
             <span className="text-cream/15">·</span>
             <span>Engineering & Scale</span>
           </div>
+        </div>
+      </section>
+
+      <WorkIndex stories={work} />
+
+      <section className="border-y border-cream/8 py-8" aria-label="Sectors">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 text-[0.62rem] uppercase tracking-[0.22em] text-cream/38 sm:px-8 lg:px-10">
+          <span className="text-cream/22">Work across</span>
+          {[...new Set(caseStories.map((c) => c.sector))].map((sector) => (
+            <span key={sector}>{sector}</span>
+          ))}
         </div>
       </section>
 

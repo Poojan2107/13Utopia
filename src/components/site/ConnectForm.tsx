@@ -3,6 +3,8 @@
 import { FormEvent, useState } from "react";
 import { site } from "@/data/site";
 
+const intents = ["Start a Project", "Discovery Call", "Partnerships", "Support"] as const;
+
 const interests = [
   "Growth & Marketing",
   "Branding & Creative",
@@ -27,6 +29,7 @@ export function ConnectForm() {
     const email = String(data.get("email") || "");
     const phone = String(data.get("phone") || "");
     const company = String(data.get("company") || "");
+    const intent = String(data.get("intent") || "");
     const interest = String(data.get("interest") || "");
     const message = String(data.get("message") || "");
 
@@ -52,6 +55,7 @@ export function ConnectForm() {
       `Email: ${email}`,
       `Phone: ${phone}`,
       `Company: ${company}`,
+      `Intent: ${intent}`,
       `Interest: ${interest}`,
       "",
       message,
@@ -76,6 +80,16 @@ export function ConnectForm() {
         <Field label="Phone" name="phone" type="tel" required autoComplete="tel" />
         <Field label="Company" name="company" autoComplete="organization" />
       </div>
+      <label className="block space-y-2 text-sm">
+        <span className="text-cream/55">Why you&apos;re here</span>
+        <select name="intent" className="field" defaultValue={intents[0]}>
+          {intents.map((i) => (
+            <option key={i} value={i}>
+              {i}
+            </option>
+          ))}
+        </select>
+      </label>
       <label className="block space-y-2 text-sm">
         <span className="text-cream/55">Interest</span>
         <select name="interest" className="field" defaultValue={interests[0]}>

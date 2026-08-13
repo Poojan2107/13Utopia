@@ -44,6 +44,11 @@ export default async function PerspectiveLeafPage({ params }: Props) {
           ]}
         />
         <PageIntro eyebrow="Perspective" title={p.title} deck={p.deck} />
+        {slug === "global-presence" && (
+          <p className="mb-10 max-w-xl text-sm leading-relaxed text-cream/45">
+            India HQ only for now. Canada office UI is deferred until that location is real.
+          </p>
+        )}
         {slug === "team" && (
           <div className="mb-16">
             <PeopleGrid people={studioPeople} />

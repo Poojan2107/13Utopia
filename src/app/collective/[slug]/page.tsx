@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { collectivePages, getCollectivePage } from "@/data/collective";
+import { peopleByRoom } from "@/data/people";
 import { Crumb, CtaBand, PageIntro } from "@/components/site/PageIntro";
 import { Reveal } from "@/components/site/Reveal";
 import { BreadcrumbJsonLd } from "@/components/site/JsonLd";
+import { PeopleGrid } from "@/components/site/People";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,6 +25,8 @@ export default async function CollectiveLeafPage({ params }: Props) {
   const { slug } = await params;
   const p = getCollectivePage(slug);
   if (!p) notFound();
+  const people = p.room ? peopleByRoom(p.room) : [];
+  const craft = slug === "creative-studio";
 
   return (
     <div className="relative">
@@ -42,6 +46,20 @@ export default async function CollectiveLeafPage({ params }: Props) {
           ]}
         />
         <PageIntro eyebrow="Collective" title={p.title} deck={p.deck} />
+        <p className="-mt-8 mb-12 max-w-2xl text-base leading-relaxed text-cream/50 lg:-mt-16">
+          {p.body}
+        </p>
+        <p className="mb-12 text-sm text-cream/35">
+          {craft
+            ? "Craft room — distinctive work, still 13UTOPiA."
+            : "Practice room — clarity, ownership, and accountable delivery."}
+        </p>
+        {people.length > 0 && (
+          <div className="mb-16">
+            <p className="mb-6 text-[0.65rem] uppercase tracking-[0.24em] text-cream/35">Seats</p>
+            <PeopleGrid people={people} />
+          </div>
+        )}
         <ul className="max-w-3xl border-t border-cream/10">
           {p.points.map((point, i) => (
             <li key={point}>
@@ -60,8 +78,8 @@ export default async function CollectiveLeafPage({ params }: Props) {
           <Link href="/careers" className="transition hover:text-amber-light">
             Careers →
           </Link>
-          <Link href="/perspective/team" className="transition hover:text-amber-light">
-            Team →
+          <Link href="/connect" className="transition hover:text-amber-light">
+            Connect →
           </Link>
         </div>
         <CtaBand />

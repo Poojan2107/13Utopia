@@ -3,6 +3,7 @@ export type Solution = {
   title: string;
   intent: string;
   deck: string;
+  whoFor: string;
   approach: string[];
   capabilityHrefs: { label: string; href: string }[];
   outcomes: string[];
@@ -14,6 +15,7 @@ export const solutions: Solution[] = [
     title: "Growth",
     intent: "More qualified demand",
     deck: "When visibility and pipeline need to compound — SEO, performance, content, and lead systems working as one.",
+    whoFor: "Founders and marketing leads whose demand is leaky, expensive, or stuck in one channel.",
     approach: [
       "Diagnose where demand leaks (channel, offer, site, follow-up).",
       "Prioritize the highest-leverage channel mix for your stage.",
@@ -32,6 +34,7 @@ export const solutions: Solution[] = [
     title: "Launch",
     intent: "Go live with confidence",
     deck: "New brand, product, or site — positioning, design, and build sequenced so launch day is a release, not a scramble.",
+    whoFor: "Teams going live with a brand, site, or MVP who cannot afford a scramble in the last two weeks.",
     approach: [
       "Lock narrative and offer before pixels and code.",
       "Design and build against a fixed MVP scope.",
@@ -50,6 +53,7 @@ export const solutions: Solution[] = [
     title: "Scale",
     intent: "Systems that keep up",
     deck: "When the team, product, or traffic outgrows ad-hoc ops — architecture, product engineering, and growth that won’t collapse under load.",
+    whoFor: "Operators whose product, traffic, or team has outgrown ad-hoc tools and heroic shipping.",
     approach: [
       "Separate what must scale now from what can wait.",
       "Strengthen the stack and delivery process in parallel.",
@@ -68,6 +72,7 @@ export const solutions: Solution[] = [
     title: "Modernize",
     intent: "Upgrade without freezing",
     deck: "Legacy sites, stacks, or workflows that slow the business — migrate and rebuild in slices, not a risky big bang.",
+    whoFor: "Businesses stuck on a legacy site or stack that cannot freeze operations for a rewrite.",
     approach: [
       "Audit risk, cost, and business dependency.",
       "Choose strangler patterns over all-or-nothing rewrites.",
@@ -86,6 +91,7 @@ export const solutions: Solution[] = [
     title: "Automate",
     intent: "Remove busywork",
     deck: "Agents, chatbots, and workflows that take work out of inboxes — grounded in your tools and guardrails.",
+    whoFor: "Ops, support, and product teams drowning in repeatable work that still lives in inboxes.",
     approach: [
       "Map the highest-cost repeatable processes.",
       "Automate with human checkpoints where judgment matters.",
@@ -104,6 +110,7 @@ export const solutions: Solution[] = [
     title: "Transform",
     intent: "Change that sticks",
     deck: "Multi-workstream programs — product, tech, brand, and growth — with owners, sequencing, and outcomes leadership can track.",
+    whoFor: "Leadership running a change program who need owners, sequence, and outcomes they can show.",
     approach: [
       "Diagnose current state without theatre.",
       "Sequence bets so early wins fund later ambition.",

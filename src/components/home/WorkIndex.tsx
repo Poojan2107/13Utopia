@@ -50,10 +50,13 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
       <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-32 lg:px-10">
         <div data-fade className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">01 — Work</p>
+            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">02 — Work</p>
             <h2 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.94] tracking-tight text-cream">
               Proof over <span className="italic text-amber-light">promises.</span>
             </h2>
+            <p className="mt-3 text-[0.62rem] uppercase tracking-[0.22em] text-cream/30">
+              Be unreal · be unreasonable
+            </p>
           </div>
           <Link
             href="/case-stories"
