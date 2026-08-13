@@ -25,8 +25,8 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-4 px-5 transition-colors duration-500 sm:h-[4.25rem] sm:px-8 lg:px-10 ${
-          scrolled ? "border-b border-cream/10 bg-void/88 backdrop-blur-xl" : ""
+        className={`mx-auto flex h-16 max-w-[1600px] items-center justify-between gap-4 px-5 transition-colors duration-500 sm:h-[4.25rem] sm:px-8 lg:px-10 ${
+          scrolled ? "border-b border-cream/10 bg-void/90 backdrop-blur-xl" : "bg-void/55 backdrop-blur-md"
         }`}
       >
         <Link href="/" className="relative block h-7 w-[6.75rem] shrink-0 sm:h-8 sm:w-[7.5rem]" aria-label={`${site.name} home`}>

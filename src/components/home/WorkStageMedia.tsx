@@ -3,13 +3,14 @@
 import type { CaseStory } from "@/data/case-stories";
 import { CasePlaceholder } from "@/components/site/CasePlaceholder";
 
-/** Home work theatre — placeholders until mediaStatus is locked. */
 export function WorkStageMedia({
   story,
   active,
+  index,
 }: {
   story: CaseStory;
   active: boolean;
+  index?: string;
   priority?: boolean;
 }) {
   return (
@@ -19,7 +20,13 @@ export function WorkStageMedia({
       }`}
       aria-hidden={!active}
     >
-      <CasePlaceholder label={story.client} className="absolute inset-0 h-full w-full" />
+      <CasePlaceholder
+        label={story.client}
+        kicker={story.sector}
+        ghost={index}
+        showLabel={false}
+        className="absolute inset-0 h-full w-full"
+      />
     </div>
   );
 }

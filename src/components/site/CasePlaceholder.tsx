@@ -35,26 +35,26 @@ export function CasePlaceholder({
 
   return (
     <div className={`relative overflow-hidden bg-void-soft ${className}`}>
-      <div className="absolute inset-0 mesh-premium opacity-55" />
+      <div className="absolute inset-0 mesh-premium opacity-80" />
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(${spot}, rgba(196,165,116,0.22), transparent 55%)`,
+          background: `radial-gradient(${spot}, rgba(196,165,116,0.38), transparent 58%)`,
         }}
       />
       {ghost ? (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 flex items-center justify-center font-serif text-[clamp(7rem,22vw,16rem)] leading-none tracking-[-0.08em] text-cream/[0.06] tabular-nums"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center whitespace-nowrap font-serif text-[clamp(8rem,26vw,22rem)] leading-none tracking-[-0.08em] text-cream/30"
         >
           {ghost}
         </span>
       ) : null}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6">
-        {kicker ? (
-          <p className="relative text-[0.58rem] uppercase tracking-[0.22em] text-cream/28">{kicker}</p>
-        ) : null}
-        {showLabel ? (
+      {showLabel ? (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6">
+          {kicker ? (
+            <p className="relative text-[0.58rem] uppercase tracking-[0.22em] text-cream/28">{kicker}</p>
+          ) : null}
           <p
             className={`relative max-w-[14ch] text-center font-serif leading-[0.95] tracking-tight text-cream/18 ${
               variant === "frame"
@@ -64,8 +64,8 @@ export function CasePlaceholder({
           >
             {label}
           </p>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
       <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
     </div>
   );

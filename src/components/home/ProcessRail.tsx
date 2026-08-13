@@ -40,17 +40,11 @@ export function ProcessRail() {
   );
 
   return (
-    <section ref={root} className="border-t border-cream/10 px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
+    <section ref={root} className="border-t border-cream/10 px-5 py-28 sm:px-8 sm:py-36 lg:px-10">
       <div className="mx-auto max-w-[1400px]">
-        <div data-fade>
-          <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">05 — Process</p>
-          <h2 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.94] tracking-tight text-cream">
-            How we <span className="italic text-amber-light">work</span>
-          </h2>
-        </div>
-
-        <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <div data-fade className="lg:sticky lg:top-32 lg:self-start">
+            <p className="mb-8 text-[0.62rem] uppercase tracking-[0.28em] text-cream/35">Process</p>
             <p className="font-mono text-xs tracking-[0.22em] text-amber-light">
               {current.n} · {durations[active]}
             </p>

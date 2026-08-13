@@ -11,6 +11,7 @@ registerGsap();
 export function WorkIndex({ stories }: { stories: CaseStory[] }) {
   const root = useRef<HTMLElement>(null);
   const pin = useRef<HTMLDivElement>(null);
+  const hovering = useRef(false);
   const [active, setActive] = useState(0);
 
   useGSAP(
@@ -22,12 +23,13 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
         ScrollTrigger.create({
           trigger: pin.current,
           start: "top top",
-          end: `+=${Math.max(stories.length, 3) * 55}vh`,
+          end: `+=${Math.max(stories.length, 3) * 70}vh`,
           pin: true,
-          scrub: 0.75,
+          scrub: 0.7,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
+            if (hovering.current) return;
             const i = Math.min(
               stories.length - 1,
               Math.floor(self.progress * stories.length + 0.001),
@@ -46,38 +48,18 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
   if (!current) return null;
 
   return (
-    <section ref={root} id="work" className="relative scroll-mt-28">
-      <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-32 lg:px-10">
-        <div data-fade className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">02 — Work</p>
-            <h2 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.94] tracking-tight text-cream">
-              Proof over <span className="italic text-amber-light">promises.</span>
-            </h2>
-            <p className="mt-3 text-[0.62rem] uppercase tracking-[0.22em] text-cream/30">
-              Be unreal · be unreasonable
-            </p>
-          </div>
-          <Link
-            href="/case-stories"
-            className="inline-flex w-fit rounded-[var(--radius-square)] border border-cream/20 px-5 py-2.5 text-[0.7rem] uppercase tracking-[0.2em] text-cream/50 transition hover:border-amber-light hover:text-amber-light"
-          >
-            All stories →
-          </Link>
-        </div>
-      </div>
-
-      <ul className="work-rail mx-auto flex max-w-[1400px] snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 sm:px-8 lg:hidden">
+    <section ref={root} id="work" className="relative bg-void scroll-mt-20">
+      <ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 py-16 sm:px-8 lg:hidden">
         {stories.map((c, i) => (
-          <li key={c.slug} className="w-[88vw] max-w-[400px] shrink-0 snap-center">
+          <li key={c.slug} className="w-[86vw] max-w-[400px] shrink-0 snap-center">
             <Link href={`/case-stories/${c.slug}`} className="group block">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-soft)] bg-void-soft">
-                <WorkStageMedia story={c} active priority={i === 0} />
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <WorkStageMedia story={c} active index={String(i + 1).padStart(2, "0")} />
+                <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-void via-void/70 to-transparent p-6">
                   <p className="text-[0.62rem] uppercase tracking-[0.2em] text-amber-light">
                     {String(i + 1).padStart(2, "0")} · {c.sector}
                   </p>
-                  <h3 className="mt-2 font-serif text-2xl text-cream group-hover:text-amber-light">{c.client}</h3>
+                  <h3 className="mt-2 font-serif text-2xl text-cream">{c.client}</h3>
                 </div>
               </div>
             </Link>
@@ -85,66 +67,74 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
         ))}
       </ul>
 
-      <div ref={pin} className="relative hidden h-dvh w-full lg:block">
+      <div ref={pin} className="relative hidden h-dvh w-full overflow-hidden lg:block">
         {stories.map((c, i) => (
-          <WorkStageMedia key={c.slug} story={c} active={i === active} priority={i === 0} />
+          <WorkStageMedia
+            key={c.slug}
+            story={c}
+            active={i === active}
+            index={c.client.split(/\s+/)[0] ?? c.client}
+          />
         ))}
 
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-void via-void/40 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-10 pb-16 pt-28">
-          <div className="grid h-full grid-cols-[minmax(0,0.34fr)_minmax(0,1fr)] items-end gap-12">
-            <ul className="space-y-0 self-end pb-2">
-              {stories.map((c, i) => (
-                <li key={c.slug} className="border-t border-cream/10 last:border-b">
-                  <button
-                    type="button"
-                    onMouseEnter={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                    onClick={() => setActive(i)}
-                    className={`flex w-full items-baseline gap-3 py-3.5 text-left transition-colors duration-300 ${
-                      i === active ? "text-cream" : "text-cream/30 hover:text-cream/65"
+        <div className="absolute inset-y-0 left-0 z-20 flex w-[15rem] flex-col justify-center px-10">
+          <p className="mb-8 text-[0.62rem] uppercase tracking-[0.28em] text-cream/40">Work</p>
+          <ul>
+            {stories.map((c, i) => (
+              <li key={c.slug} className="border-t border-cream/10 last:border-b">
+                <button
+                  type="button"
+                  onMouseEnter={() => {
+                    hovering.current = true;
+                    setActive(i);
+                  }}
+                  onMouseLeave={() => {
+                    hovering.current = false;
+                  }}
+                  onFocus={() => {
+                    hovering.current = true;
+                    setActive(i);
+                  }}
+                  onBlur={() => {
+                    hovering.current = false;
+                  }}
+                  className={`flex w-full items-baseline gap-3 py-3.5 text-left transition-colors duration-300 ${
+                    i === active ? "text-cream" : "text-cream/32 hover:text-cream/65"
+                  }`}
+                >
+                  <span
+                    className={`font-mono text-[0.65rem] tabular-nums ${
+                      i === active ? "text-amber-light" : "text-cream/22"
                     }`}
                   >
-                    <span
-                      className={`font-mono text-[0.65rem] tabular-nums ${
-                        i === active ? "text-amber-light" : "text-cream/22"
-                      }`}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      className={`truncate font-serif tracking-tight transition-all duration-300 ${
-                        i === active ? "text-xl text-amber-light" : "text-base"
-                      }`}
-                    >
-                      {c.client}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`truncate font-serif tracking-tight ${
+                      i === active ? "text-lg text-amber-light" : "text-base"
+                    }`}
+                  >
+                    {c.client}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-            <div className="flex flex-col items-start justify-end pb-2">
-              <p className="font-serif text-[clamp(5rem,11vw,9rem)] leading-none tracking-[-0.06em] text-cream/[0.07] tabular-nums">
-                {String(active + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-2 text-[0.62rem] uppercase tracking-[0.24em] text-amber-light">
-                {current.sector}
-                {current.year ? ` · ${current.year}` : ""}
-              </p>
-              <h3 className="mt-3 max-w-2xl font-serif text-[clamp(2.4rem,4.5vw,4.5rem)] leading-[0.98] tracking-tight text-cream">
-                {current.client}
-              </h3>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-cream/60">{current.summary}</p>
-              <Link href={`/case-stories/${current.slug}`} className="btn-primary group mt-8">
-                <span>Open story</span>
-                <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-            </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-8 bg-gradient-to-t from-void via-void/60 to-transparent px-10 pb-28 pt-36 lg:pl-[17rem]">
+          <div>
+            <p className="text-[0.62rem] uppercase tracking-[0.22em] text-amber-light">
+              {current.sector}
+              {current.year ? ` · ${current.year}` : ""}
+            </p>
+            <h2 className="mt-3 font-serif text-[clamp(2.6rem,5vw,5.4rem)] leading-[0.9] tracking-tight text-cream">
+              {current.client}
+            </h2>
           </div>
+          <Link href={`/case-stories/${current.slug}`} className="btn-primary pointer-events-auto shrink-0">
+            Open story →
+          </Link>
         </div>
       </div>
     </section>

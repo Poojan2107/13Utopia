@@ -22,14 +22,12 @@ export function ProofStrip() {
   if (!current) return null;
 
   return (
-    <section className="border-t border-cream/10 px-5 py-24 sm:px-8 sm:py-32 lg:px-10">
+    <section className="px-5 py-28 sm:px-8 sm:py-36 lg:px-10">
       <div data-fade className="mx-auto max-w-[1400px]">
-        <p className="text-[0.65rem] uppercase tracking-[0.32em] text-amber-light/80">06 — Proof</p>
-
-        <figure className="mt-10 lg:grid lg:grid-cols-12 lg:gap-12">
+        <figure className="lg:grid lg:grid-cols-12 lg:gap-12">
           <blockquote
             key={current.id}
-            className="quote-swap font-serif text-[clamp(1.4rem,2.8vw,2.35rem)] leading-[1.28] tracking-tight text-cream lg:col-span-8"
+            className="quote-swap font-serif text-[clamp(1.7rem,3.4vw,3.1rem)] leading-[1.18] tracking-tight text-cream lg:col-span-8"
           >
             &ldquo;{current.quote}&rdquo;
           </blockquote>
@@ -56,7 +54,7 @@ export function ProofStrip() {
           </figcaption>
         </figure>
 
-        <dl className="mt-20 grid gap-10 border-t border-cream/10 pt-12 sm:grid-cols-3">
+        <dl className="mt-16 grid gap-10 border-t border-cream/10 pt-12 sm:grid-cols-3">
           {site.metrics.map((m) => (
             <div key={m.label}>
               <dd className="font-serif text-[clamp(2.8rem,6vw,4.8rem)] leading-none tracking-tight text-cream">
