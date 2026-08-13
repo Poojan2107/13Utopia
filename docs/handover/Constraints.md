@@ -8,6 +8,7 @@
 - Hero promo chips, live-ping HQ pills, service chip rows
 - Mismatched client logos or case covers on home (placeholders until real assets)
 - Rewriting interiors while home lock is the task
+- Reintroducing a two-column L/R hero (superseded 2026-08-13)
 - Speculative features / extra GSAP plugins
 - Changing ops facts except via `src/data/site.ts` (email, phone, WhatsApp, Shyamal address, tagline)
 - Force-push, skip hooks, or “while we’re here” refactors

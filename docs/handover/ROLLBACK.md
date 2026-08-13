@@ -1,9 +1,9 @@
 # Rollback
 
-If this home pass fails review:
+If this homepage takeover fails review:
 
 ```
-git checkout fbc7af2 -- src/app/page.tsx src/components/home/HeroStage.tsx src/components/home/WorkIndex.tsx src/components/home/WorkStageMedia.tsx
+git checkout 5e9804d -- src/app/page.tsx src/components/home/HeroStage.tsx src/components/home/WorkIndex.tsx src/components/home/WorkStageMedia.tsx
 ```
 
-Keep `docs/handover/` (locks stay). Do not revert docs with the UI rollback unless asked.
+That restores the last pre-takeover home composition. Keep `docs/handover/` unless asked to revert the 2B lock. Do not force-push.

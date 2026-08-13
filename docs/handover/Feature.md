@@ -1,9 +1,9 @@
-# Feature — Dual identity home lock
+# Feature — Homepage takeover
 
-**Goal:** Home matches locked composition without a site-wide redesign.
+**Goal:** Homepage reads as one authored scene, not a brochure template. Interiors stay.
 
-**Trail:** Plan lock (2026-08-12) → `docs/handover/` → HeroStage L/R → `page.tsx` order → WorkStageMedia placeholders.
+**Trail:** Lock 1A/2B/3C/4A/5A → `HOME-BRIEF.md` + `HOME-SPEC.md` → `HeroStage` full-viewport → whisper Perspective → work theatre → validate.
 
-**Deliver:** Visible L/R hero, correct section order, no mismatched media.
+**Deliver:** Takeover hero, locked section order, placeholder-safe work, no interior rewrite.
 
-**Follow-up:** Locked case media when files exist in `public/cases/[slug]/` + `mediaStatus: "locked"`. Interiors (leaves, Collective, Careers, cross-links) shipped without media.
+**Follow-up:** Locked case media when files exist in `public/cases/[slug]/` + `mediaStatus: "locked"`.

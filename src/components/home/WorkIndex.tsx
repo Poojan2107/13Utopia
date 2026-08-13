@@ -78,7 +78,15 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
         ))}
 
         <div className="absolute inset-y-0 left-0 z-20 flex w-[15rem] flex-col justify-center px-10">
-          <p className="mb-8 text-[0.62rem] uppercase tracking-[0.28em] text-cream/40">Work</p>
+          <div className="mb-8 flex items-baseline justify-between gap-3">
+            <p className="text-[0.62rem] uppercase tracking-[0.28em] text-cream/40">Work</p>
+            <Link
+              href="/case-stories"
+              className="text-[0.62rem] uppercase tracking-[0.18em] text-cream/35 transition hover:text-amber-light"
+            >
+              All →
+            </Link>
+          </div>
           <ul>
             {stories.map((c, i) => (
               <li key={c.slug} className="border-t border-cream/10 last:border-b">
@@ -98,7 +106,8 @@ export function WorkIndex({ stories }: { stories: CaseStory[] }) {
                   onBlur={() => {
                     hovering.current = false;
                   }}
-                  className={`flex w-full items-baseline gap-3 py-3.5 text-left transition-colors duration-300 ${
+                  aria-pressed={i === active}
+                  className={`flex w-full items-baseline gap-3 py-3.5 text-left transition-colors duration-300 focus-visible:outline-none focus-visible:text-cream ${
                     i === active ? "text-cream" : "text-cream/32 hover:text-cream/65"
                   }`}
                 >

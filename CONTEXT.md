@@ -43,7 +43,7 @@ Docs: `docs/handover/` · `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Signature UI (Phase 13):** Dual creative/pro identity. Home L/R hero. Interiors complete. Placeholders until real case/client assets.
+**Signature UI (Phase 13):** Dual creative/pro identity. Home = full-viewport takeover (L/R split superseded). Interiors complete. Placeholders until real case/client assets.
 
 ---
 

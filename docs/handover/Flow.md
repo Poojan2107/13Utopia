@@ -4,8 +4,8 @@
 Request /
   → layout.tsx (chrome + AmbientLight + cursor)
   → page.tsx (HomeMotion)
-      → HeroStage (GSAP intro + scrub on mark)
-      → Perspective teaser (static)
+      → HeroStage (takeover: intro + light mark scrub)
+      → Perspective whisper (static)
       → WorkIndex (ScrollTrigger pin lg; WorkStageMedia placeholders)
       → CapabilitiesIndex
       → Solutions list
