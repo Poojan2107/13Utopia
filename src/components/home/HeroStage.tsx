@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef } from "react";
 import { gsap, registerGsap } from "@/lib/gsap";
@@ -117,6 +117,7 @@ export function HeroStage() {
       </div>
 
       <div className="hero-plus">
+        <div className="hero-art" aria-hidden="true" />
         <h1 className="sr-only">Be Unreal. Be Unreasonable.</h1>
         <p className="sr-only">{supportingLine}</p>
 

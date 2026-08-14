@@ -37,6 +37,7 @@ export function WorldsMorph() {
               data-world-panel
               className={`grid items-end gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12${world.id === "create" ? " is-on" : ""}`}
             >
+              <div className="world-panel-art" data-world-art={world.id} aria-hidden="true" />
               <p className="type-hero self-end text-[clamp(3rem,10vw,8.5rem)] text-cream">
                 <span className="block whitespace-nowrap">We</span>
                 <span className="block whitespace-nowrap">{world.word}</span>
@@ -64,4 +65,5 @@ export function WorldsMorph() {
     </section>
   );
 }
+
 
