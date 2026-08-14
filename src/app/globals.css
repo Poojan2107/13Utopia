@@ -893,3 +893,15 @@ a:not(.btn-pill):not(.no-underline):hover { text-decoration-color: var(--color-a
 @keyframes hero-light-sweep { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
 @media (max-width: 640px) { .hero-plus > .hero-art { animation-duration: 22s; } .hero-plus { background-size: 220% 220%; } }
 @media (prefers-reduced-motion: reduce) { .hero-plus > .hero-art, .hero-plus { animation: none; } }
+
+/* Create / Build / Grow spatial transition */
+[data-world-panel] { position: relative; perspective: 1200px; isolation: isolate; }
+[data-world-panel]::before { content: none; }
+[data-world-panel].is-on::before { content: none; }
+.world-panel-art { will-change: transform, opacity; transform: scale(1.08) rotate(-2deg); filter: saturate(0.72) contrast(1.08); transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.23, 1, 0.32, 1), filter 0.8s ease, border-color 0.8s ease; }
+[data-world-panel].is-on .world-panel-art { transform: scale(1.015) rotate(0deg) translate3d(0, -1%, 0); filter: saturate(0.96) contrast(1.12); }
+[data-world-panel] > div:first-child { position: relative; z-index: 2; }
+[data-world-panel] li { transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), color 0.45s ease; }
+[data-world-panel].is-on li { transform: translateX(0.2rem); }
+@media (max-width: 640px) { .world-panel-art { transform: scale(1.04) rotate(-1deg); } [data-world-panel].is-on .world-panel-art { transform: scale(1.01); } }
+@media (prefers-reduced-motion: reduce) { .world-panel-art, [data-world-panel] li { transition: none; transform: none; } }
