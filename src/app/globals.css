@@ -875,13 +875,21 @@ a:not(.btn-pill):not(.no-underline):hover { text-decoration-color: var(--color-a
 @media (max-width: 768px) { main > section:not(:first-child)::before { left: 1.25rem; right: 1.25rem; } }
 @media (prefers-reduced-motion: reduce) { .btn-pill, .capsule { transition: none; } }
 
+
 /* Lower-section art direction */
 #outcomes { background-image: radial-gradient(circle at 78% 24%, color-mix(in srgb, var(--color-amber) 12%, transparent), transparent 32%), linear-gradient(180deg, var(--color-void), var(--color-void-soft)); }
 [data-outcome] { position: relative; border-left: 1px solid color-mix(in srgb, var(--color-cream) 10%, transparent); padding-left: 1.25rem; transition: border-color 0.55s ease, transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.55s ease; }
 [data-outcome].is-on { border-left-color: color-mix(in srgb, var(--color-amber-light) 68%, transparent); transform: translateX(0.35rem); }
 #perspective { position: relative; background-image: radial-gradient(circle at 74% 22%, color-mix(in srgb, var(--color-amber-light) 22%, transparent), transparent 26%), linear-gradient(135deg, transparent 42%, rgba(0, 0, 0, 0.04)); }
-#perspective::after { content: '; position: absolute; width: min(42vw, 38rem); aspect-ratio: 1; right: -10vw; bottom: -18vw; border: 1px solid rgba(0, 0, 0, 0.14); border-radius: 50%; transform: rotate(-16deg); pointer-events: none; }
+#perspective::after { content: none; }
 #connect { background-image: radial-gradient(circle at 22% 18%, color-mix(in srgb, var(--color-amber) 10%, transparent), transparent 30%), linear-gradient(180deg, var(--color-void), #090909 72%, var(--color-void-soft)); }
-#connect::after { content: '; position: absolute; inset: 12% 7%; border: 1px solid color-mix(in srgb, var(--color-cream) 8%, transparent); pointer-events: none; }
-@media (max-width: 768px) { #perspective::after { width: 22rem; right: -11rem; bottom: -8rem; } #connect::after { inset: 8% 1.25rem; } }
+#connect::after { content: none; }
 @media (prefers-reduced-motion: reduce) { [data-outcome] { transition: none; } }
+
+/* Cinematic hero drift */
+@keyframes hero-art-drift { 0% { transform: scale(1.01) translate3d(-0.5%, 0, 0); background-position: 49% 46%; } 50% { transform: scale(1.045) translate3d(0.4%, -0.6%, 0); background-position: 51% 44%; } 100% { transform: scale(1.02) translate3d(0.7%, 0.4%, 0); background-position: 50% 47%; } }
+.hero-plus > .hero-art { animation: hero-art-drift 18s ease-in-out infinite alternate; transform-origin: center center; }
+.hero-plus { background-image: linear-gradient(115deg, transparent 18%, color-mix(in srgb, var(--color-amber-light) 7%, transparent) 48%, transparent 72%); background-size: 180% 180%; animation: hero-light-sweep 12s ease-in-out infinite alternate; }
+@keyframes hero-light-sweep { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@media (max-width: 640px) { .hero-plus > .hero-art { animation-duration: 22s; } .hero-plus { background-size: 220% 220%; } }
+@media (prefers-reduced-motion: reduce) { .hero-plus > .hero-art, .hero-plus { animation: none; } }
