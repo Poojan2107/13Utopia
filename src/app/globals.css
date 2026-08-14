@@ -874,3 +874,14 @@ a:not(.btn-pill):not(.no-underline) { text-underline-offset: 0.28em; text-decora
 a:not(.btn-pill):not(.no-underline):hover { text-decoration-color: var(--color-amber-light); }
 @media (max-width: 768px) { main > section:not(:first-child)::before { left: 1.25rem; right: 1.25rem; } }
 @media (prefers-reduced-motion: reduce) { .btn-pill, .capsule { transition: none; } }
+
+/* Lower-section art direction */
+#outcomes { background-image: radial-gradient(circle at 78% 24%, color-mix(in srgb, var(--color-amber) 12%, transparent), transparent 32%), linear-gradient(180deg, var(--color-void), var(--color-void-soft)); }
+[data-outcome] { position: relative; border-left: 1px solid color-mix(in srgb, var(--color-cream) 10%, transparent); padding-left: 1.25rem; transition: border-color 0.55s ease, transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.55s ease; }
+[data-outcome].is-on { border-left-color: color-mix(in srgb, var(--color-amber-light) 68%, transparent); transform: translateX(0.35rem); }
+#perspective { position: relative; background-image: radial-gradient(circle at 74% 22%, color-mix(in srgb, var(--color-amber-light) 22%, transparent), transparent 26%), linear-gradient(135deg, transparent 42%, rgba(0, 0, 0, 0.04)); }
+#perspective::after { content: '; position: absolute; width: min(42vw, 38rem); aspect-ratio: 1; right: -10vw; bottom: -18vw; border: 1px solid rgba(0, 0, 0, 0.14); border-radius: 50%; transform: rotate(-16deg); pointer-events: none; }
+#connect { background-image: radial-gradient(circle at 22% 18%, color-mix(in srgb, var(--color-amber) 10%, transparent), transparent 30%), linear-gradient(180deg, var(--color-void), #090909 72%, var(--color-void-soft)); }
+#connect::after { content: '; position: absolute; inset: 12% 7%; border: 1px solid color-mix(in srgb, var(--color-cream) 8%, transparent); pointer-events: none; }
+@media (max-width: 768px) { #perspective::after { width: 22rem; right: -11rem; bottom: -8rem; } #connect::after { inset: 8% 1.25rem; } }
+@media (prefers-reduced-motion: reduce) { [data-outcome] { transition: none; } }
