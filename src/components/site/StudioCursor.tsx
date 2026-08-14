@@ -20,7 +20,7 @@ export function StudioCursor() {
     const coreEl = core.current;
     if (!root || !ringEl || !coreEl) return;
 
-    root.style.display = "block";
+    let armed = false;
     document.documentElement.classList.add("cursor-studio");
 
     const xRing = gsap.quickTo(ringEl, "x", { duration: 0.45, ease: "power3.out" });
@@ -29,6 +29,10 @@ export function StudioCursor() {
     const yCore = gsap.quickTo(coreEl, "y", { duration: 0.12, ease: "power3.out" });
 
     const move = (e: PointerEvent) => {
+      if (!armed) {
+        armed = true;
+        root.style.display = "block";
+      }
       xRing(e.clientX);
       yRing(e.clientY);
       xCore(e.clientX);

@@ -1,10 +1,10 @@
 export const site = {
   name: "13UTOPiA",
   legalName: "13UTOPiA",
-  tagline: "Be Unreal Be Unreasonable",
-  headline: "Be Unreal Be Unreasonable",
+  tagline: "Be Unreal. Be Unreasonable.",
+  headline: "Be Unreal. Be Unreasonable.",
   description:
-    "13UTOPiA is a growth and technology agency in Ahmedabad offering SEO, branding, web and app development, AI automation, cloud engineering, and strategy — Shyamal HQ.",
+    "A creative technology and growth company building brands, products and systems for ambitious organizations.",
   url: "https://13utopia.com",
   email: "info@13utopia.com",
   phone: "+91 9924131397",
@@ -26,7 +26,6 @@ export const site = {
     { value: "Ongoing", label: "Client partnerships" },
     { value: "18+", label: "Countries reached" },
   ],
-  /** Shown near metrics until independently verified */
   metricsNote: "Studio figures — verified metrics publish when audited.",
   social: {
     instagram: "https://www.instagram.com/13_utopia_/",
@@ -37,22 +36,31 @@ export const site = {
   },
 } as const;
 
-/** Live nav — routes that exist */
+/** Primary nav — brief C20. Careers lives inside Collective. */
 export const nav = [
-  { href: "/", label: "Home" },
-  { href: "/perspective", label: "Perspective" },
+  { href: "/case-stories", label: "Work" },
   { href: "/capabilities", label: "Capabilities" },
   { href: "/solutions", label: "Solutions" },
-  { href: "/case-stories", label: "Case Stories" },
+  { href: "/perspective", label: "Perspective" },
   { href: "/collective", label: "Collective" },
-  { href: "/careers", label: "Careers" },
   { href: "/connect", label: "Connect" },
 ] as const;
 
+export const cta = {
+  persistent: "Start something unreasonable",
+  persistentHref: "/connect",
+  discovery: "Schedule discovery",
+  discoveryHref: "/connect",
+  heroPrimary: "Enter Utopia",
+  heroSecondary: "Start a project",
+  final: "Let's make it real",
+} as const;
+
 export const processSteps = [
-  { n: "01", title: "Discover", blurb: "Goals, audience, and constraints — clear before we design." },
-  { n: "02", title: "Define", blurb: "Positioning, scope, and the system we’ll build against." },
-  { n: "03", title: "Build", blurb: "Craft and engineering in the same loop — shippable quality." },
-  { n: "04", title: "Launch", blurb: "Go live with performance, SEO basics, and a clean handoff." },
-  { n: "05", title: "Grow", blurb: "Measure, iterate, and compound what already works." },
+  { n: "01", title: "Question", blurb: "Challenge the obvious." },
+  { n: "02", title: "Imagine", blurb: "Find the unreasonable possibility." },
+  { n: "03", title: "Define", blurb: "Turn the idea into strategy." },
+  { n: "04", title: "Create", blurb: "Design the experience." },
+  { n: "05", title: "Build", blurb: "Engineer the system." },
+  { n: "06", title: "Grow", blurb: "Launch, measure, optimize." },
 ] as const;

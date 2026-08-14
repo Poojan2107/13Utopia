@@ -1,18 +1,20 @@
 # 13UTOPiA — Project Context
 
 > Read before changing site code.  
-> Last updated: 2026-08-13  
-> **Handover (any IDE):** [docs/handover/README.md](./docs/handover/README.md)
+> Last updated: 2026-08-14  
+> **Active:** [docs/strategy/DESIGN-SYSTEM.md](./docs/strategy/DESIGN-SYSTEM.md) — FUTURE spine · RAW hit · ART silence. Brief still wins. **Homepage is a chapter film.** Plus-Ex is the experience bar, not the look. Judge on localhost. 
+> **Ops handover:** [docs/handover/README.md](./docs/handover/README.md)
 
 ---
 
 ## 1. Why this project exists
 
-**13UTOPiA** is a growth & technology agency (**Ahmedabad / Shyamal HQ**).  
-Goal: ship the **official website** — premium, clear, SEO/AEO-ready, responsive.  
-**Build for ourselves first.** Awwwards-style presence = Phase 9 ✓.  
-**Canada** = deferred (no Canada office UI yet).  
-Greek gods / mythology: **scrapped.**
+**13UTOPiA** is a creative technology & growth company (**Ahmedabad / Shyamal HQ**).  
+Goal: official site as a **brand experience**, not another agency template.  
+Tagline philosophy: *Be Unreal. Be Unreasonable.*  
+**Canada** = operating model not yet confirmed for UI.  
+Greek gods / mythology: **scrapped.**  
+Homepage UI lock from 2026-08-13 is **parked**.
 
 ---
 
@@ -43,7 +45,7 @@ Docs: `docs/handover/` · `content/CONTENT-GUIDE.md` · `content/ASSETS.md` · `
 
 **Eventual:** Home · Perspective · Capabilities · Solutions · Case Stories · Collective · Careers · Connect  
 
-**Signature UI (Phase 13):** Dual creative/pro identity. Home = full-viewport takeover (L/R split superseded). Interiors complete. Placeholders until real case/client assets.
+**Now:** Design DNA v0.1. Next = three visual directions. No page design until one wins. Live IA/code remains in the repo but is not the brief.
 
 ---
 

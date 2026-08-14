@@ -1,13 +1,11 @@
 # AGENTS.md — 13UTOPiA
 
-Start at **[docs/handover/README.md](./docs/handover/README.md)**. Then **[CONTEXT.md](./CONTEXT.md)**.
+**Brief:** [docs/strategy/BRIEF.md](./docs/strategy/BRIEF.md)  
+**System:** [docs/strategy/DESIGN-SYSTEM.md](./docs/strategy/DESIGN-SYSTEM.md)
 
 ## Phase focus
-- Surgical home lock (takeover hero · placeholders · India only)
-- Full IA live except Canada
-- No gods · no ThemeForest clones
-- Data under `src/data/`
-- Single `npm run dev`
-
-## Design
-Void / cream / amber. Soft radii. Restraint. Always 13UTOPiA.
+- Homepage is a chapter film. Hero = tagline as architecture (Be Unreal / Be Unreasonable).
+- Fuse: FUTURE spine · RAW first hit · ART silence
+- **Colour:** void / cream / amber only. Lime deferred.
+- Steal principles from Munich / RPA / KOTA / GSAP / Plus-Ex — never copy them
+- Do not generate mood stills to find layout. Code the page. Look at localhost.

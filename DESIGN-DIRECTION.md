@@ -1,9 +1,8 @@
 # 13UTOPiA — Design Direction
 
-> Synthesized from the inspiration list (2026-08-07).  
-> **Brand kit lock:** three marks in `public/brand/` (see Logo system).  
-> **Status:** Dual-identity UI **locked** (2026-08-13). See `docs/handover/`.  
-> Greek gods / statues: **scrapped**. Canada UI: **deferred**.
+> **Superseded as the brief.** Active: [docs/strategy/DESIGN-DNA.md](./docs/strategy/DESIGN-DNA.md).  
+> This file remains useful for **existing brand-kit files** in `public/brand/`.  
+> Synthesized from the inspiration list (2026-08-07). Greek gods / statues: **scrapped**.
 
 ---
 

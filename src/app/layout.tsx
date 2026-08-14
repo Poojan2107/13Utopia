@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif, Syne } from "next/font/google";
+import Script from "next/script";
+import { Bodoni_Moda, Great_Vibes, Instrument_Sans, Instrument_Serif, Inter, Syne } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -11,8 +12,16 @@ import { OrganizationJsonLd } from "@/components/site/JsonLd";
 import { AmbientLight } from "@/components/site/AmbientLight";
 import { StudioCursor } from "@/components/site/StudioCursor";
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "700", "800", "900"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 const syne = Syne({
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-syne",
   display: "swap",
 });
@@ -31,20 +40,35 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const editorial = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-bodoni",
+  display: "swap",
+});
+
+const script = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script-face",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Growth & Technology Agency · Ahmedabad`,
+    default: `${site.name} — Be Unreal. Be Unreasonable.`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords: [
-    "digital marketing agency Ahmedabad",
-    "web development Ahmedabad",
-    "SEO agency India",
-    "AI automation agency",
-    "branding studio",
     "13UTOPiA",
+    "creative technology company",
+    "branding Ahmedabad",
+    "web and product engineering",
+    "growth and SEO",
+    "AI automation",
   ],
   authors: [{ name: site.name, url: site.url }],
   openGraph: {
@@ -72,8 +96,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${instrument.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${syne.variable} ${instrument.variable} ${instrumentSerif.variable} ${editorial.variable} ${script.variable}`}>
       <body className="min-h-dvh flex flex-col">
+        <Script id="intro-lock" strategy="beforeInteractive">
+          {`(function(){try{if(location.pathname==="/"&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.setAttribute("data-intro","locked");}}catch(e){}})();`}
+        </Script>
         <OrganizationJsonLd />
         <AmbientLight />
         <StudioCursor />
